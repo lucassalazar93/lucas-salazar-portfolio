@@ -1,12 +1,32 @@
-# React + Vite
+# 👨‍💻 Lucas Salazar — Portafolio Profesional
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Bienvenido a mi portafolio personal como desarrollador web!  
+Soy **Lucas Salazar**, tecnólogo en Análisis y Desarrollo de Software, apasionado por la innovación, el aprendizaje continuo y la inteligencia artificial como aliada en nuestras soluciones digitales.
 
-Currently, two official plugins are available:
+## 🚀 Sobre mí
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 💼 Desarrollador fullstack enfocado en proyectos con impacto real.
+- 🧠 Apasionado por la IA aplicada al desarrollo web.
+- 📚 En formación continua, siempre explorando herramientas que mejoran productividad y resultados.
+- 💡 Creo herramientas que no solo funcionan, sino que conectan y convierten.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías y herramientas destacadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React, Vite, Tailwind, HTML5, CSS3, JavaScript
+- **Backend**: Node.js, Express
+- **Bases de datos**: MySQL, MongoDB
+- **Otras**: GitHub, Figma, Canva, Adobe XD, Midjourney, IA aplicada
+
+## 🌐 Sitio Web
+
+📍 [lucassalazar93.github.io/lucas-salazar-portfolio](https://lucassalazar93.github.io/lucas-salazar-portfolio)
+
+## 📬 Contacto
+
+- ✉️ lucas.salazar.dev@gmail.com
+- 💬 [WhatsApp profesional](https://wa.me/573150399322)
+- 💼 [LinkedIn](https://www.linkedin.com/in/lucas-salazar-722b79319/)
+
+---
+
+> *Gracias por visitar mi portafolio. Si te interesa trabajar conmigo o tienes alguna idea para colaborar, ¡estaré encantado de conversar!*
