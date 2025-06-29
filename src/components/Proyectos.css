@@ -1,0 +1,151 @@
+:root {
+  --color-white: #f2f2f2;
+  --color-gray: #737373;
+  --color-orange: #ff5e00;
+  --color-orange-hover: #e64a00;
+}
+
+/* ===== Sección ===== */
+.proyectos {
+  padding: 5rem 1rem;
+  background: linear-gradient(180deg, #101726 0%, #0d0d0d 60%);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.proyectos__titulo {
+  font-family: "Norwester", sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.proyectos__frase {
+  font-size: 1.1rem;
+  color: var(--color-gray);
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+/* ===== Grid ===== */
+.proyectos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ===== Tarjeta glass ===== */
+.proyecto__card {
+  position: relative;
+  padding: 2.2rem 1.8rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+/* Glow circular giratorio */
+.proyecto__card::before {
+  content: "";
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0%,
+    #ff5e00 10%,
+    transparent 20%,
+    transparent 60%,
+    #ff5e00 70%,
+    transparent 80%
+  );
+  animation: girarGlow 6s linear infinite;
+  opacity: 0.25;
+}
+@keyframes girarGlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glass overlay interno */
+.proyecto__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: -1;
+}
+
+/* Hover */
+.proyecto__card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 94, 0, 0.25);
+}
+
+/* ===== Contenido ===== */
+.proyecto__icono {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 6px rgba(255, 94, 0, 0.4));
+}
+
+.proyecto__card h3 {
+  font-size: 1.45rem;
+  color: var(--color-orange);
+  margin-bottom: 0.5rem;
+}
+
+.descripcion {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #e6e6e6;
+}
+
+.detalles {
+  font-size: 0.9rem;
+  color: #c4c4c4;
+}
+
+/* ===== Estado ===== */
+.estado {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado-finalizado {
+  background: rgba(0, 180, 100, 0.2);
+  color: #00b464;
+  border: 1px solid #00b464;
+}
+
+.estado-en-desarrollo {
+  background: rgba(255, 150, 0, 0.15);
+  color: #ffa733;
+  border: 1px solid #ffa733;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 480px) {
+  .proyecto__card {
+    padding: 1.8rem 1.4rem;
+  }
+  .proyecto__card h3 {
+    font-size: 1.25rem;
+  }
+  .descripcion {
+    font-size: 0.95rem;
+  }
+}

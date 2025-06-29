@@ -1,0 +1,155 @@
+/* ───────────────────────────────
+   1. TIPOGRAFÍAS
+─────────────────────────────── */
+@font-face {
+  font-family: "Norwester";
+  src: url("../assets/fonts/norwester.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap");
+
+/* ───────────────────────────────
+   2. VARIABLES GLOBALES
+─────────────────────────────── */
+:root {
+  /* 🎨 Paleta profesional */
+  --color-bg-primary: #101726; /* Fondo principal */
+  --color-bg-secondary: #1e2940; /* Fondo alternativo */
+  --color-text-light: #f2f2f2; /* Texto claro principal */
+  --color-text-muted: #737373; /* Texto gris neutro */
+  --color-text-dark: #0d0d0d; /* Casi negro */
+
+  /* 🎯 Acento neutro y flexible (puedes personalizarlo luego) */
+  --color-accent: #1e2940;
+  --color-accent-hover: #101726;
+
+  /* Tipografías */
+  --font-title: "Norwester", sans-serif;
+  --font-subtitle: "Playfair Display", serif;
+  --font-base: "Montserrat", sans-serif;
+
+  /* Layout */
+  --max-width: 1180px;
+  --section-padding: 4rem;
+}
+
+/* ───────────────────────────────
+   3. RESET BÁSICO
+─────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-light);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ───────────────────────────────
+   4. UTILIDADES GENERALES
+─────────────────────────────── */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+section {
+  padding: var(--section-padding) 1rem;
+}
+
+.container {
+  width: min(90%, var(--max-width));
+  margin-inline: auto;
+}
+
+/* ───────────────────────────────
+   5. TIPOGRAFÍA / JERARQUÍA
+─────────────────────────────── */
+h1 {
+  font-family: var(--font-title);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+h2,
+h3 {
+  font-family: var(--font-subtitle);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-text-light);
+}
+
+p,
+li,
+span {
+  font-family: var(--font-base);
+  font-weight: 300;
+  color: var(--color-text-muted);
+}
+
+/* ───────────────────────────────
+   6. BOTONES
+─────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-text-light);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn--outline {
+  border: 2px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.btn--outline:hover {
+  background: var(--color-accent);
+  color: var(--color-text-light);
+}
