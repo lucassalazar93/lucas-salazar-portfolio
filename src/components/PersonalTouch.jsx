@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./PersonalTouch.css";
-import firmaLucas from "../assets/firma_lucas.png"; // Ajusta la ruta si es necesario
+import firmaLucas from "../assets/firma_lucas.svg"; // Ajusta la ruta si es necesario
 
 const PersonalTouch = () => {
   useEffect(() => {
