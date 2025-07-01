@@ -23,7 +23,8 @@ Soy **Lucas Salazar**, tecnólogo en Análisis y Desarrollo de Software, apasion
 
 ## 📬 Contacto
 
-- ✉️ lucas.salazar.dev@gmail.com
+- ✉️ lucassalazar.work93@gmail.com
+
 - 💬 [WhatsApp profesional](https://wa.me/573150399322)
 - 💼 [LinkedIn](https://www.linkedin.com/in/lucas-salazar-722b79319/)
 
