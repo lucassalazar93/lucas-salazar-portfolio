@@ -29,4 +29,4 @@ Soy **Lucas Salazar**, tecnólogo en Análisis y Desarrollo de Software, apasion
 
 ---
 
-> *Gracias por visitar mi portafolio. Si te interesa trabajar conmigo o tienes alguna idea para colaborar, ¡estaré encantado de conversar!*
+> _Gracias por visitar mi portafolio. Si te interesa trabajar conmigo o tienes alguna idea para colaborar, ¡estaré encantado de conversar!_

@@ -67,7 +67,7 @@ const ContactoSincero = () => {
             <span>LinkedIn</span>
           </a>
           <a
-            href="https://instagram.com/lucas.creativo"
+            href="https://www.instagram.com/soylukassalazar/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Ver Instagram Creativo"

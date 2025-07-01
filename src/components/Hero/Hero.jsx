@@ -96,17 +96,25 @@ const Hero = () => {
             ref={actionsRef}
             className={`hero__actions ${actionsVisible ? "is-visible" : ""}`}
           >
-            <a href="#proyectos" className="btn btn--primary">
+            <a
+              href="https://lukbyte-my-website.vercel.app/servicios/ejemplos#"
+              className="btn btn--primary"
+            >
               Ver mis proyectos
             </a>
             <a
-              href="/hoja-de-vida-lucas-salazar-2025.pdf"
+              href="/Lucas_SalazarVilla_CV2025.pdf"
               className="btn btn--outline"
               download
             >
               Descargar CV
             </a>
-            <a href="#contacto" className="btn btn--coffee">
+            <a
+              href="https://wa.me/573150399322?text=Hola%20Lucas,%20me%20encantó%20tu%20portafolio%20y%20me%20gustaría%20hablar%20contigo%20👋"
+              className="btn btn--coffee"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Tomémonos un café ☕
             </a>
           </div>
