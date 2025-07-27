@@ -47,6 +47,12 @@ const Navbar = () => {
           <a href="#sobre-mi" onClick={(e) => handleScroll(e, "sobre-mi")}>
             Sobre&nbsp;mí
           </a>
+          <a
+            href="#certificados"
+            onClick={(e) => handleScroll(e, "certificados")}
+          >
+            Certificados
+          </a>
           <a href="#contacto" onClick={(e) => handleScroll(e, "contacto")}>
             Contacto
           </a>

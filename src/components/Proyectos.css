@@ -9,7 +9,7 @@
 .proyectos {
   padding: 5rem 1rem;
   background: linear-gradient(180deg, #101726 0%, #0d0d0d 60%);
-  color: var(--color-white);
+  color: #ff5e00;
   text-align: center;
 }
 

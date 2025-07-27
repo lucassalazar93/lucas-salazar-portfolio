@@ -60,7 +60,7 @@ const cardVariants = {
 
 const Certificados = () => (
   <section className="certificados" id="certificados">
-    <h2 className="certificados__titulo">📜 Certificados</h2>
+    <h2 className="certificados__titulo"> Certificados</h2>
     <p className="certificados__subtitulo">
       “Cada curso es una chispa que alimenta mi crecimiento profesional.”
     </p>

@@ -15,6 +15,7 @@ import PersonalTouch from "./components/PersonalTouch";
 import ContactoSincero from "./components/ContactoSincero";
 import Footer from "./components/Footer/Footer";
 import Certificados from "./components/Certificados";
+import Servicios from "./components/Servicios";
 
 /* ✅ Futuras secciones: sobre mí, proyectos, contacto, etc. */
 
@@ -28,6 +29,7 @@ function App() {
       <Proyectos />
       <Certificados />
       <Tecnologias />
+      <Servicios />
       <CintaNeon />
       <PersonalTouch />
       <ContactoSincero />
