@@ -1,34 +1,37 @@
-/* ─────────────────────────────────────────────
-   Tecnologias.jsx ▸ “Lluvia” de chips con Framer Motion
-───────────────────────────────────────────── */
 import React from "react";
 import { motion } from "framer-motion";
 import "./Tecnologias.css";
 
 /* ---------- 1. Datos ---------- */
-const herramientasTecnicas = [
+const frontend = [
   "HTML5",
   "CSS3",
   "JavaScript (ES6+)",
   "React.js",
   "Tailwind CSS",
   "Bootstrap",
-  "Node.js",
-  "Express.js",
-  "API REST",
-  "MongoDB",
-  "MySQL",
-  "Sequelize ORM",
-  "Autenticación JWT",
-  "Manejo de rutas",
-  "Consumo de APIs",
-  "Git",
-  "GitHub",
-  "Postman",
-  "Visual Studio Code",
-  "Figma",
+  "Framer Motion",
+  "React Router DOM",
+  "React Hook Form",
   "SunEditor",
 ];
+
+const backend = [
+  "Node.js",
+  "Express.js",
+  ".NET (C#)",
+  "ASP.NET Core",
+  "API REST",
+  "Autenticación JWT",
+  "Entity Framework Core",
+  "LINQ",
+  "Manejo de rutas",
+  "Consumo de APIs",
+];
+
+const basesDeDatos = ["MongoDB", "MySQL", "SQL Server", "Sequelize ORM"];
+
+const herramientas = ["Git", "GitHub", "Postman", "Visual Studio", "Figma"];
 
 const habilidadesBlandas = [
   "Diseño responsive",
@@ -50,7 +53,6 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      /* tiempo entre burbujas → lluvia suave y rápida */
       staggerChildren: 0.08,
     },
   },
@@ -76,19 +78,58 @@ const Tecnologias = () => (
           Estas son mis herramientas favoritas. Pero no son mi único talento.
         </p>
 
-        <motion.div
-          className="tech-grid"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {herramientasTecnicas.map((tech) => (
-            <motion.span key={tech} className="tech-chip" variants={chip}>
-              {tech}
-            </motion.span>
-          ))}
-        </motion.div>
+        {/* Bloques por categoría */}
+        <div className="categorias-tecnologias">
+          <div className="bloque-tecnologia">
+            <h3 className="categoria-titulo">Frontend</h3>
+            <motion.div
+              className="tech-grid"
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {frontend.map((tech) => (
+                <motion.span key={tech} className="tech-chip" variants={chip}>
+                  {tech}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="bloque-tecnologia">
+            <h3 className="categoria-titulo">Backend</h3>
+            <motion.div className="tech-grid" variants={container}>
+              {backend.map((tech) => (
+                <motion.span key={tech} className="tech-chip" variants={chip}>
+                  {tech}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="bloque-tecnologia">
+            <h3 className="categoria-titulo">Bases de datos</h3>
+            <motion.div className="tech-grid" variants={container}>
+              {basesDeDatos.map((tech) => (
+                <motion.span key={tech} className="tech-chip" variants={chip}>
+                  {tech}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="bloque-tecnologia">
+            <h3 className="categoria-titulo">Herramientas</h3>
+            <motion.div className="tech-grid" variants={container}>
+              {herramientas.map((tech) => (
+                <motion.span key={tech} className="tech-chip" variants={chip}>
+                  {tech}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
 

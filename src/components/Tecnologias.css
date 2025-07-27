@@ -25,7 +25,7 @@
   padding: 0 1rem;
 }
 
-/* --------------- TITULOS --------------- */
+/* --------------- TITULOS PRINCIPALES --------------- */
 .tecnologias__titulo {
   font-size: 2.5rem;
   font-family: "Norwester", sans-serif;
@@ -43,6 +43,26 @@
   max-width: 720px;
   margin: 0 auto 3rem;
   line-height: 1.6;
+}
+
+/* --------------- BLOQUES POR CATEGORÍA --------------- */
+.categorias-tecnologias {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.bloque-tecnologia {
+  margin-bottom: 1rem;
+}
+
+.categoria-titulo {
+  font-size: 1.4rem;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: "Norwester", sans-serif;
+  letter-spacing: 0.5px;
 }
 
 /* --------------- GRIDS --------------- */
@@ -67,10 +87,9 @@
   font-weight: 500;
   cursor: default;
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px); /* ✅ Safari compatibility */
+  -webkit-backdrop-filter: blur(6px);
   transition: all 0.25s ease;
   user-select: none;
-  -webkit-user-select: none; /* ✅ Safari compatibility */
 }
 
 /* CHIP TÉCNICO */
@@ -140,6 +159,10 @@
   .tecnologias__subtitulo {
     font-size: 0.95rem;
     padding: 0 1rem;
+  }
+
+  .categoria-titulo {
+    font-size: 1.2rem;
   }
 
   .tech-chip,

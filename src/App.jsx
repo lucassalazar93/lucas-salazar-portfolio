@@ -14,6 +14,7 @@ import Tecnologias from "./components/Tecnologias";
 import PersonalTouch from "./components/PersonalTouch";
 import ContactoSincero from "./components/ContactoSincero";
 import Footer from "./components/Footer/Footer";
+import Certificados from "./components/Certificados";
 
 /* ✅ Futuras secciones: sobre mí, proyectos, contacto, etc. */
 
@@ -25,6 +26,7 @@ function App() {
       <CintaNeon />
       <QuienSoy />
       <Proyectos />
+      <Certificados />
       <Tecnologias />
       <CintaNeon />
       <PersonalTouch />
