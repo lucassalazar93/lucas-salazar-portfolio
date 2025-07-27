@@ -13,7 +13,7 @@ const certificados = [
     enlace: "/images/certificados/diploma-basico-programacion.pdf",
   },
   {
-    icono: "/images/certificados/diploma-c-sharp-poo.jpg", // miniatura como imagen
+    icono: "/images/certificados/diploma-c-sharp-poo.jpg",
     titulo: "Programación Orientada a Objetos en C#",
     entidad: "Platzi",
     fecha: "Julio 2025",
@@ -51,13 +51,17 @@ const gridVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 60 },
+  },
 };
 
 const Certificados = () => (
   <section className="certificados" id="certificados">
     <h2 className="certificados__titulo">📜 Certificados</h2>
-    <p className="certificados__frase">
+    <p className="certificados__subtitulo">
       “Cada curso es una chispa que alimenta mi crecimiento profesional.”
     </p>
 
@@ -73,8 +77,14 @@ const Certificados = () => (
           className="certificado__card"
           key={c.titulo}
           variants={cardVariants}
+          whileTap={{ scale: 0.97 }}
         >
-          <img src={c.icono} alt={c.titulo} className="certificado__icono" />
+          <img
+            src={c.icono}
+            alt={c.titulo}
+            className="certificado__icono"
+            loading="lazy"
+          />
           <h3>{c.titulo}</h3>
           <p className="entidad">{c.entidad}</p>
           <span className="fecha">{c.fecha}</span>
