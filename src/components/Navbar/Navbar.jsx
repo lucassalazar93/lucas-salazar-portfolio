@@ -37,7 +37,10 @@ const Navbar = () => {
         </h1>
 
         {/* Menú principal */}
-        <nav className={`navbar__menu ${menuOpen ? "open" : ""}`}>
+        <nav
+          className={`navbar__menu ${menuOpen ? "open" : ""}`}
+          aria-hidden={!menuOpen}
+        >
           <a href="#home" onClick={(e) => handleScroll(e, "home")}>
             Inicio
           </a>
@@ -58,9 +61,16 @@ const Navbar = () => {
           </a>
         </nav>
 
+        <div
+          className={`navbar__backdrop ${menuOpen ? "open" : ""}`}
+          aria-hidden="true"
+          onClick={() => setMenuOpen(false)}
+        />
+
         {/* Botón hamburguesa */}
         <button
           className={`navbar__toggle${menuOpen ? " active" : ""}`}
+          aria-expanded={menuOpen}
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           onClick={() => setMenuOpen(!menuOpen)}
         >
