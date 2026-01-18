@@ -39,6 +39,15 @@ const certificados = [
       "Curso enfocado en el uso de LINQ para consultar y transformar datos en C#. Aprendí a optimizar la manipulación de colecciones con sintaxis declarativa y expresiones lambda.",
     enlace: "/images/certificados/diploma-linq.pdf",
   },
+  {
+    icono: "/images/certificados/diploma-arquitectura-software.jpg",
+    titulo: "Fundamentos de Arquitectura de Software",
+    entidad: "Platzi",
+    fecha: "Julio 2025",
+    descripcion:
+      "Certificación técnica en el diseño de sistemas escalables y mantenibles. Aprendí a seleccionar estructuras de software adecuadas basándome en requerimientos de negocio y atributos de calidad.",
+    enlace: "/images/certificados/diploma-arquitectura-software-2025.pdf",
+  },
 ];
 
 const gridVariants = {

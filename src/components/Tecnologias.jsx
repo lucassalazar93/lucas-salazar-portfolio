@@ -2,50 +2,58 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./Tecnologias.css";
 
-/* ---------- 1. Datos ---------- */
+/* ---------- 1. Datos (alineados a tu hoja de vida) ---------- */
 const frontend = [
-  "HTML5",
-  "CSS3",
+  "React.js (Core)",
   "JavaScript (ES6+)",
-  "React.js",
-  "Tailwind CSS",
-  "Bootstrap",
-  "Framer Motion",
-  "React Router DOM",
-  "React Hook Form",
-  "SunEditor",
+  "TypeScript",
+  "HTML5",
+  "CSS3 (Modular, Tokens y Temas)",
+  "Diseño Responsive (Mobile First)",
+  "PWA (Progressive Web Apps)",
+  "Framer Motion (Animaciones)",
+  "Shopify API (E-commerce Multimarca)",
+  "Data Visualization (Dashboards/KPIs)",
+  "React Hook Form (Smart Forms)",
 ];
 
 const backend = [
-  "Node.js",
-  "Express.js",
   ".NET (C#)",
   "ASP.NET Core",
-  "API REST",
-  "Autenticación JWT",
-  "Entity Framework Core",
+  "Arquitectura limpia aplicada a Frontend",
+  "Arquitectura por funcionalidades (Feature-based)",
+  "Principios SOLID",
+  "Separación de responsabilidades",
   "LINQ",
-  "Manejo de rutas",
-  "Consumo de APIs",
+  "Entity Framework Core",
+  "Node.js",
+  "Express.js",
+  "APIs REST",
+  "GraphQL",
+  "Autenticación JWT",
+  "Multi-tenant Architecture",
 ];
 
-const basesDeDatos = ["MongoDB", "MySQL", "SQL Server", "Sequelize ORM"];
+const basesDeDatos = ["SQL Server", "MySQL", "Firebase (Realtime Data)"];
 
-const herramientas = ["Git", "GitHub", "Postman", "Visual Studio", "Figma"];
+const herramientas = [
+  "IA (Copilot/Agentes y Automatización)",
+  "Git & GitHub",
+  "Postman",
+  "Vite",
+  "Visual Studio Code",
+  "Figma",
+  "QR / Omnicanalidad (Carritos por QR)",
+];
 
 const habilidadesBlandas = [
-  "Diseño responsive",
-  "Comunicación efectiva y asertiva",
-  "Resolución de problemas",
-  "Liderazgo y trabajo en equipo",
-  "Adaptabilidad y aprendizaje continuo",
-  "Proactividad y responsabilidad",
-  "Diseño web",
-  "Mantenimiento web",
-  "Atención al detalle",
-  "Gestión de sitios web",
-  "Creatividad",
-  "Integración de servicios web",
+  "Liderazgo técnico en proyectos multimarca",
+  "Diseño de experiencias omnicanal (físico + digital)",
+  "Resolución de problemas de alta complejidad",
+  "Comunicación asertiva en entornos corporativos",
+  "Atención al detalle y calidad de UI (Pixel Perfect)",
+  "Pensamiento estratégico de producto",
+  "Adaptabilidad tecnológica y aprendizaje acelerado",
 ];
 
 /* ---------- 2. Variantes de animación ---------- */
@@ -75,13 +83,14 @@ const Tecnologias = () => (
       <div className="container">
         <h2 className="tecnologias__titulo">Tecnologías</h2>
         <p className="tecnologias__subtitulo">
-          Estas son mis herramientas favoritas. Pero no son mi único talento.
+          Transformando ideas complejas en soluciones digitales robustas y
+          escalables.
         </p>
 
-        {/* Bloques por categoría */}
         <div className="categorias-tecnologias">
+          {/* Bloque Frontend */}
           <div className="bloque-tecnologia">
-            <h3 className="categoria-titulo">Frontend</h3>
+            <h3 className="categoria-titulo">Frontend & UX</h3>
             <motion.div
               className="tech-grid"
               variants={container}
@@ -97,9 +106,16 @@ const Tecnologias = () => (
             </motion.div>
           </div>
 
+          {/* Bloque Backend */}
           <div className="bloque-tecnologia">
-            <h3 className="categoria-titulo">Backend</h3>
-            <motion.div className="tech-grid" variants={container}>
+            <h3 className="categoria-titulo">Backend & Arquitectura</h3>
+            <motion.div
+              className="tech-grid"
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+            >
               {backend.map((tech) => (
                 <motion.span key={tech} className="tech-chip" variants={chip}>
                   {tech}
@@ -108,22 +124,22 @@ const Tecnologias = () => (
             </motion.div>
           </div>
 
+          {/* Bloque Datos y Herramientas */}
           <div className="bloque-tecnologia">
-            <h3 className="categoria-titulo">Bases de datos</h3>
-            <motion.div className="tech-grid" variants={container}>
-              {basesDeDatos.map((tech) => (
-                <motion.span key={tech} className="tech-chip" variants={chip}>
-                  {tech}
-                </motion.span>
-              ))}
-            </motion.div>
-          </div>
-
-          <div className="bloque-tecnologia">
-            <h3 className="categoria-titulo">Herramientas</h3>
-            <motion.div className="tech-grid" variants={container}>
-              {herramientas.map((tech) => (
-                <motion.span key={tech} className="tech-chip" variants={chip}>
+            <h3 className="categoria-titulo">Datos & Innovación</h3>
+            <motion.div
+              className="tech-grid"
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+            >
+              {[...basesDeDatos, ...herramientas].map((tech) => (
+                <motion.span
+                  key={tech}
+                  className="tech-chip tech-chip--special"
+                  variants={chip}
+                >
                   {tech}
                 </motion.span>
               ))}
@@ -133,12 +149,13 @@ const Tecnologias = () => (
       </div>
     </section>
 
-    {/* --- HABILIDADES BLANDAS --- */}
+    {/* --- HABILIDADES --- */}
     <section className="habilidades" id="habilidades">
       <div className="container">
-        <h2 className="tecnologias__titulo">Habilidades</h2>
+        <h2 className="tecnologias__titulo">Habilidades Profesionales</h2>
         <p className="tecnologias__subtitulo">
-          Lo técnico importa, pero la forma en que trabajamos lo cambia todo.
+          Más allá del código: estrategia, gestión multimarca e innovación
+          tecnológica.
         </p>
 
         <motion.div

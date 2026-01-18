@@ -12,37 +12,44 @@ const PersonalTouch = () => {
   return (
     <section className="personal-touch" id="personal">
       <div className="container">
-        {/* FRÁSE PRINCIPAL */}
+        {/* FRÁSE PRINCIPAL: Más contundente */}
         <blockquote
           className="personal-quote"
           data-aos="zoom-in"
           data-aos-delay="50"
         >
-          “<span className="resaltado">Soy humano antes que desarrollador</span>
-          ,<br />y ese latido se escucha en cada línea de código.”
+          “La tecnología es solo el medio;{" "}
+          <span className="resaltado">el propósito siempre es humano.</span>
+          <br />
+          Diseño software para que las personas vivan mejor, no solo para que
+          las máquinas funcionen.”
         </blockquote>
 
-        {/* PÁRRAFO PRINCIPAL */}
+        {/* PÁRRAFO PRINCIPAL: Conecta tu técnica con tu sentir */}
         <p className="texto-personal" data-aos="fade-up" data-aos-delay="250">
-          Amo acompañar a las personas en sus desafíos, traducir sus historias
-          en soluciones que simplifican la vida y sembrar pequeñas chispas de
-          alegría digital.
+          Mi trayectoria en el ecosistema de{" "}
+          <strong>Crystal (Gef, Punto Blanco, Baby Fresh)</strong> me enseñó que
+          detrás de cada KPI de eficiencia o cada avatar creado con IA, hay un
+          ser humano buscando una experiencia auténtica.
           <br />
           <br />
-          Comparto sin reservas lo que sé —aunque sea poco— porque el
-          conocimiento solo cobra sentido cuando se multiplica en otras manos.
+          No me conformo con escribir código limpio; busco traducir historias y
+          desafíos en soluciones que simplifiquen el día a día. Comparto mi
+          conocimiento porque creo firmemente que la innovación solo tiene valor
+          cuando se democratiza y se multiplica en manos de otros.
           <br />
           <br />
-          No busco impresionar con tecnicismos. Mi anhelo es construir puentes
-          auténticos entre la idea y la experiencia real.
+          Mi enfoque no es impresionar con la complejidad de la arquitectura,
+          sino construir puentes invisibles pero sólidos entre la visión de un
+          negocio y la emoción de su usuario final.
         </p>
 
-        {/* FRASE DE CIERRE EMOCIONAL */}
+        {/* FRASE DE CIERRE: Inspiradora */}
         <p className="cierre-cita" data-aos="fade-up" data-aos-delay="450">
-          Que cada usuario sienta que la tecnología que creamos fue pensada para
-          ellos,
+          Porque al final del día, el mejor software es aquel que se siente
+          invisible
           <br />
-          <strong>con cariño y propósito.</strong>
+          <strong>porque fue diseñado con empatía y propósito.</strong>
         </p>
 
         {/* FIRMA */}

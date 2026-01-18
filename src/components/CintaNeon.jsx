@@ -3,10 +3,10 @@ import React from "react";
 import "./cintaNeon.css";
 
 const frases = [
-  "💡 Cada línea de código es una chispa de creación.",
-  "🧠 La tecnología no reemplaza, potencia.",
-  "🤖 La IA no piensa por mí, piensa conmigo.",
-  "🚀 Desarrollo no es solo lógica… también es emoción.",
+  "🏗️ Código limpio hoy, soluciones escalables para el mañana.",
+  "🚀 Transformando requerimientos complejos en experiencias de alta fidelidad.",
+  "🤖 La IA no reemplaza al desarrollador, potencia su capacidad de innovación.",
+  "🧠 Ingeniería con propósito: donde la lógica se encuentra con la emoción.",
 ];
 
 const CintaNeon = () => {

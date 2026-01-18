@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 
 /* ─── Frases que rotan ─────────────────────────────── */
 const phrases = [
-  "No solo escribo código, creo experiencias que respiran propósito. Como desarrollador de software, fusiono creatividad, inteligencia artificial y diseño emocional para construir interfaces que conectan con las personas y generan resultados que impactan de verdad.",
+  "No solo escribo código; diseño soluciones digitales con propósito y escalabilidad. Como desarrollador de software, fusiono arquitectura limpia, inteligencia artificial y diseño emocional para construir interfaces que no solo conectan con las personas, sino que impulsan resultados de negocio medibles e impactos reales en la industria.",
 ];
 
 /* ─── Variantes de Framer Motion ───────────────────── */
@@ -49,7 +49,7 @@ const Hero = () => {
   useEffect(() => {
     const io = new IntersectionObserver(
       ([entry]) => setActionsVisible(entry.isIntersecting),
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     if (actionsRef.current) io.observe(actionsRef.current);
     return () => io.disconnect();
@@ -74,6 +74,9 @@ const Hero = () => {
             Hola, soy <br />
             Lucas Salazar
           </h1>
+          <p className="hero__subtitle">
+            Frontend Developer | React & TypeScript Specialist
+          </p>
 
           {/* Swiper frases */}
           <Swiper
@@ -103,7 +106,7 @@ const Hero = () => {
               Ver mis proyectos
             </a>
             <a
-              href="/Lucas_SalazarVilla_CV2025.pdf"
+              href="/CV_Lucas_Salazar_Frontend_Developer.pdf"
               className="btn btn--outline"
               download
             >
