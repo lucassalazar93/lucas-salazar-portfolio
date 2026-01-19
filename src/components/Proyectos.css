@@ -1,0 +1,248 @@
+:root {
+  --color-white: #f2f2f2;
+  --color-gray: #737373;
+  --color-orange: #ff5e00;
+  --color-orange-hover: #e64a00;
+
+  /* Extras (no rompen nada, solo ayudan a consistencia) */
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-br: rgba(255, 255, 255, 0.08);
+  --text-soft: #c4c4c4;
+  --text-main: #e6e6e6;
+}
+
+/* ===== Sección ===== */
+.proyectos {
+  padding: 5rem 1rem;
+  background: linear-gradient(180deg, #101726 0%, #0d0d0d 60%);
+  color: var(--color-orange);
+  text-align: center;
+}
+
+.proyectos__titulo {
+  font-family: "Norwester", sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.proyectos__frase {
+  font-size: 1.1rem;
+  color: var(--color-gray);
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+/* ===== Grid ===== */
+.proyectos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ===== Tarjeta glass ===== */
+.proyecto__card {
+  position: relative;
+  padding: 2.2rem 1.8rem;
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-br);
+
+  /* glass */
+  backdrop-filter: blur(14px);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  overflow: hidden;
+
+  /* asegura que el contenido quede por encima del glow */
+  isolation: isolate;
+}
+
+/* Glow circular giratorio (fondo decorativo) */
+.proyecto__card::before {
+  content: "";
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0%,
+    var(--color-orange) 10%,
+    transparent 20%,
+    transparent 60%,
+    var(--color-orange) 70%,
+    transparent 80%
+  );
+  animation: girarGlow 6s linear infinite;
+  opacity: 0.25;
+
+  /* se queda atrás */
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes girarGlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Overlay interno para darle profundidad (entre glow y contenido) */
+.proyecto__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.35);
+
+  /* detrás del contenido, encima del glow */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Todo el contenido debe quedar arriba del overlay */
+.proyecto__card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover */
+.proyecto__card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 94, 0, 0.25);
+}
+
+/* ===== Contenido ===== */
+.proyecto__icono {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 6px rgba(255, 94, 0, 0.4));
+}
+
+.proyecto__card h3 {
+  font-size: 1.45rem;
+  color: var(--color-orange);
+  margin-bottom: 0.5rem;
+}
+
+.descripcion {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.detalles {
+  display: inline-block;
+  margin-top: 0.1rem;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  line-height: 1.35;
+}
+
+/* ===== Estado ===== */
+.estado {
+  display: inline-block;
+  margin-top: 0.9rem;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Finalizado */
+.estado-finalizado {
+  background: rgba(0, 180, 100, 0.18);
+  color: #00b464;
+  border: 1px solid rgba(0, 180, 100, 0.65);
+}
+
+/* En desarrollo */
+.estado-en-desarrollo {
+  background: rgba(255, 150, 0, 0.14);
+  color: #ffa733;
+  border: 1px solid rgba(255, 167, 51, 0.7);
+}
+
+/* Caso de Éxito / Corporativo (para que NO se vaya al estilo de en desarrollo) */
+.estado-exito {
+  background: rgba(80, 170, 255, 0.14);
+  color: #62b5ff;
+  border: 1px solid rgba(98, 181, 255, 0.7);
+}
+
+/* ===== Accesibilidad: focus visible si vuelves cards clicables ===== */
+.proyecto__card:focus-within {
+  outline: 2px solid rgba(255, 94, 0, 0.55);
+  outline-offset: 3px;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 768px) {
+  .proyectos {
+    padding: 4rem 1rem;
+  }
+
+  .proyectos__titulo {
+    font-size: 2.1rem;
+  }
+
+  .proyectos__frase {
+    font-size: 1.02rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .proyectos__grid {
+    gap: 1.4rem;
+  }
+
+  .proyecto__card:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+@media (max-width: 480px) {
+  .proyectos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proyecto__card {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .proyecto__icono {
+    width: 74px;
+    height: 74px;
+  }
+
+  .proyecto__card h3 {
+    font-size: 1.25rem;
+  }
+
+  .descripcion {
+    font-size: 0.95rem;
+  }
+
+  .detalles {
+    font-size: 0.88rem;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .proyecto__card,
+  .proyecto__card:hover {
+    transition: none;
+    transform: none;
+  }
+  .proyecto__card::before {
+    animation: none;
+  }
+}

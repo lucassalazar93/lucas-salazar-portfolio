@@ -1,23 +1,44 @@
+/* ───────────────────────────────
+   1. TIPOGRAFÍAS
+─────────────────────────────── */
+@font-face {
+  font-family: "Norwester";
+  src: url("../assets/fonts/norwester.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap");
 
+/* ───────────────────────────────
+   2. VARIABLES GLOBALES
+─────────────────────────────── */
 :root {
-  --color-bg-primary: #101726;
-  --color-bg-secondary: #1e2940;
-  --color-text-light: #f2f2f2;
-  --color-text-muted: #737373;
-  --color-text-dark: #0d0d0d;
+  /* 🎨 Paleta profesional */
+  --color-bg-primary: #101726; /* Fondo principal */
+  --color-bg-secondary: #1e2940; /* Fondo alternativo */
+  --color-text-light: #f2f2f2; /* Texto claro principal */
+  --color-text-muted: #737373; /* Texto gris neutro */
+  --color-text-dark: #0d0d0d; /* Casi negro */
 
+  /* 🎯 Acento neutro y flexible (puedes personalizarlo luego) */
   --color-accent: #1e2940;
   --color-accent-hover: #101726;
 
+  /* Tipografías */
   --font-title: "Norwester", sans-serif;
   --font-subtitle: "Playfair Display", serif;
   --font-base: "Montserrat", sans-serif;
 
+  /* Layout */
   --max-width: 1180px;
   --section-padding: 4rem;
 }
 
+/* ───────────────────────────────
+   3. RESET BÁSICO
+─────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -38,6 +59,9 @@ body {
   line-height: 1.6;
 }
 
+/* ───────────────────────────────
+   4. UTILIDADES GENERALES
+─────────────────────────────── */
 img {
   max-width: 100%;
   display: block;
@@ -58,9 +82,7 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 section {
@@ -72,6 +94,9 @@ section {
   margin-inline: auto;
 }
 
+/* ───────────────────────────────
+   5. TIPOGRAFÍA / JERARQUÍA
+─────────────────────────────── */
 h1 {
   font-family: var(--font-title);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -96,6 +121,9 @@ span {
   color: var(--color-text-muted);
 }
 
+/* ───────────────────────────────
+   6. BOTONES
+─────────────────────────────── */
 .btn {
   display: inline-block;
   padding: 0.85rem 1.8rem;
@@ -103,68 +131,25 @@ span {
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-  transition:
-    background 0.3s ease-in-out,
-    color 0.3s ease-in-out,
-    transform 0.15s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn--primary {
-  background: var(--color-orange);
+  background: var(--color-accent);
   color: var(--color-text-light);
-  border: none;
-  box-shadow: 0 8px 20px rgba(255, 94, 0, 0.18);
 }
 
 .btn--primary:hover {
-  background: var(--color-orange-hover);
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(255, 94, 0, 0.25);
-}
-
-/* Asegurar color del texto en estado normal y hover (contraste profesional) */
-.btn--primary,
-.btn--primary * {
-  color: var(--color-text-light);
-}
-
-.btn--primary:hover,
-.btn--primary:focus,
-.btn--primary:active {
-  color: var(--color-text-dark);
+  background: var(--color-accent-hover);
 }
 
 .btn--outline {
-  border: 2px solid var(--color-orange);
+  border: 2px solid var(--color-accent);
   background: transparent;
-  color: var(--color-orange);
+  color: var(--color-accent);
 }
 
 .btn--outline:hover {
-  background: var(--color-orange);
+  background: var(--color-accent);
   color: var(--color-text-light);
-}
-
-/* Size modifiers */
-.btn--sm {
-  padding: 0.45rem 0.9rem;
-  font-size: 0.88rem;
-  border-radius: 10px;
-}
-
-.btn--lg {
-  padding: 1rem 2rem;
-  font-size: 1.05rem;
-  border-radius: 12px;
-}
-
-.btn--coffee {
-  background-color: var(--color-coffee);
-  color: var(--color-text-light);
-  border: none;
-}
-
-.btn--coffee:hover {
-  background-color: var(--color-coffee-hover);
-  color: var(--color-text-dark);
 }
