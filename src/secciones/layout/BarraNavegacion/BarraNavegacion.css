@@ -1,0 +1,98 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0e0e0e;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.navbar__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo a {
+  font-family: "Norwester", sans-serif;
+  font-size: 1.8rem;
+  color: var(--color-white);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation: slideInLeftSlow 1.6s ease-out forwards;
+}
+
+.navbar__logo span {
+  color: var(--color-orange);
+}
+
+.navbar__menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar__menu a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  transition: color 0.3s ease;
+}
+
+.navbar__menu a:hover {
+  color: var(--color-orange);
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@keyframes slideInLeftSlow {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar__menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #101726;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar__menu.open {
+    transform: translateY(0);
+  }
+
+  .navbar__toggle {
+    display: flex;
+  }
+}
