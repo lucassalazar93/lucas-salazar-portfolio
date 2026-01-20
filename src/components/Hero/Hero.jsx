@@ -39,7 +39,7 @@ const piece = {
 const Hero = () => {
   /* AOS init */
   useEffect(() => {
-    AOS.init({ duration: 1200 });
+    AOS.init({ duration: 600, once: true });
   }, []);
 
   /* Botones show/hide con IntersectionObserver */
@@ -49,7 +49,7 @@ const Hero = () => {
   useEffect(() => {
     const io = new IntersectionObserver(
       ([entry]) => setActionsVisible(entry.isIntersecting),
-      { threshold: 0.4 },
+      { threshold: 0.1 },
     );
     if (actionsRef.current) io.observe(actionsRef.current);
     return () => io.disconnect();

@@ -61,17 +61,17 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.04,
     },
   },
 };
 
 const chip = {
-  hidden: { opacity: 0, y: -25 },
+  hidden: { opacity: 0, y: -15 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
 };
 

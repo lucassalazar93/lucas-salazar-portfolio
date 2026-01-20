@@ -6,7 +6,7 @@ import firmaLucas from "../assets/firma_lucas.svg"; // Ajusta la ruta si es nece
 
 const PersonalTouch = () => {
   useEffect(() => {
-    AOS.init({ duration: 900, once: true });
+    AOS.init({ duration: 500, once: true });
   }, []);
 
   return (
@@ -16,17 +16,17 @@ const PersonalTouch = () => {
         <blockquote
           className="personal-quote"
           data-aos="zoom-in"
-          data-aos-delay="50"
+          data-aos-delay="0"
         >
-          “La tecnología es solo el medio;{" "}
+          "La tecnología es solo el medio;{" "}
           <span className="resaltado">el propósito siempre es humano.</span>
           <br />
           Diseño software para que las personas vivan mejor, no solo para que
-          las máquinas funcionen.”
+          las máquinas funcionen."
         </blockquote>
 
         {/* PÁRRAFO PRINCIPAL: Conecta tu técnica con tu sentir */}
-        <p className="texto-personal" data-aos="fade-up" data-aos-delay="250">
+        <p className="texto-personal" data-aos="fade-up" data-aos-delay="100">
           Mi trayectoria en el ecosistema de{" "}
           <strong>Crystal (Gef, Punto Blanco, Baby Fresh)</strong> me enseñó que
           detrás de cada KPI de eficiencia o cada avatar creado con IA, hay un
@@ -45,7 +45,7 @@ const PersonalTouch = () => {
         </p>
 
         {/* FRASE DE CIERRE: Inspiradora */}
-        <p className="cierre-cita" data-aos="fade-up" data-aos-delay="450">
+        <p className="cierre-cita" data-aos="fade-up" data-aos-delay="200">
           Porque al final del día, el mejor software es aquel que se siente
           invisible
           <br />
@@ -53,7 +53,7 @@ const PersonalTouch = () => {
         </p>
 
         {/* FIRMA */}
-        <div className="firma-wrapper" data-aos="fade-in" data-aos-delay="650">
+        <div className="firma-wrapper" data-aos="fade-in" data-aos-delay="300">
           <hr className="firma-line" />
           <img
             src={firmaLucas}

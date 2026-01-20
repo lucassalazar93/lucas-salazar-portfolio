@@ -54,16 +54,16 @@ const gridVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.08, delayChildren: 0 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 60 },
+    transition: { duration: 0.4, ease: "easeOut" },
   },
 };
 
