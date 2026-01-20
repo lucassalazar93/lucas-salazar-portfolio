@@ -93,7 +93,9 @@
   max-width: 240px;
   opacity: 0.85;
   filter: drop-shadow(0 0 8px rgba(255, 94, 0, 0.35));
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .firma:hover {
@@ -103,6 +105,10 @@
 
 /* ---------- Responsive tweaks ---------- */
 @media (max-width: 1024px) {
+  .personal-touch {
+    padding: 5rem 1.2rem;
+  }
+
   .personal-quote {
     font-size: 1.6rem;
   }
@@ -115,9 +121,14 @@
 }
 
 @media (max-width: 768px) {
+  .personal-touch {
+    padding: 4rem 1rem;
+  }
+
   .personal-quote {
     font-size: 1.5rem;
     padding: 0 1rem;
+    line-height: 1.5;
   }
   .texto-personal {
     font-size: 0.93rem;
@@ -130,8 +141,13 @@
 }
 
 @media (max-width: 480px) {
+  .personal-touch {
+    padding: 3rem 0.75rem;
+  }
+
   .personal-quote {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
   }
   .texto-personal {
     font-size: 0.9rem;

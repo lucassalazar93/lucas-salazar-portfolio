@@ -32,7 +32,7 @@ const Navbar = () => {
         {/* Logo (animación slide-in definida en CSS) */}
         <h1 className="navbar__logo">
           <a href="#home" onClick={(e) => handleScroll(e, "home")}>
-            Lucas<span>Salazar</span>| Frontend
+            Lucas<span>Salazar</span>
           </a>
         </h1>
 

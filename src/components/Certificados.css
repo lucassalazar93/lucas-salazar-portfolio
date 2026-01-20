@@ -44,7 +44,9 @@
   padding: 2rem;
   text-align: center;
   box-shadow: 0 0 12px rgba(255, 94, 0, 0.07);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,45 +110,96 @@
 
 /* --------------- RESPONSIVE: SCROLL HORIZONTAL --------------- */
 @media (max-width: 768px) {
+  .certificados {
+    padding: 4rem 1rem;
+  }
+
   .certificados__titulo {
     font-size: 2rem;
   }
 
   .certificados__subtitulo {
     font-size: 0.95rem;
+    padding: 0 1rem;
   }
 
   .certificados__grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     gap: 1.2rem;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
+  }
+
+  .certificados__grid::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .certificados__grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .certificados__grid::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 10px;
   }
 
   .certificado__card {
-    width: 85%;
-    max-width: 300px;
-    margin: 0 auto;
+    min-width: 85%;
+    max-width: 320px;
   }
 }
 
 @media (max-width: 480px) {
+  .certificados {
+    padding: 3rem 0.75rem;
+  }
+
+  .certificados__titulo {
+    font-size: 1.75rem;
+  }
+
+  .certificados__subtitulo {
+    font-size: 0.9rem;
+  }
+
+  .certificado__card {
+    min-width: 90%;
+    max-width: 300px;
+    padding: 1.5rem;
+  }
+
   .certificado__icono {
     width: 100%;
     height: auto;
+    max-height: 200px;
+  }
+
+  .certificado__card h3 {
+    font-size: 1.1rem;
+  }
+
+  .entidad {
+    font-size: 0.9rem;
+  }
+
+  .descripcion {
+    font-size: 0.85rem;
+    min-height: 50px;
   }
 }
 
 /* --------------- ANIMACIÓN DE TEXTO --------------- */
 @keyframes glowText {
   from {
-    text-shadow: 0 0 6px rgba(255, 94, 0, 0.153),
+    text-shadow:
+      0 0 6px rgba(255, 94, 0, 0.153),
       0 0 12px rgba(255, 94, 0, 0.25);
   }
   to {
-    text-shadow: 0 0 12px rgba(255, 94, 0, 0.308),
+    text-shadow:
+      0 0 12px rgba(255, 94, 0, 0.308),
       0 0 24px rgba(255, 94, 0, 0.292);
   }
 }

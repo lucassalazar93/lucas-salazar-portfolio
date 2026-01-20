@@ -53,6 +53,7 @@
   transition: 0.3s ease all;
   font-family: var(--font-base);
   min-width: 180px;
+  min-height: 44px;
   justify-content: center;
   text-align: center;
 

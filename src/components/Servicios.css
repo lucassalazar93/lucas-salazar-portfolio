@@ -33,7 +33,9 @@
   padding: 0.8rem 1.6rem;
   border-radius: 25px;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
   animation: palpitar 1.8s ease-in-out infinite;
   box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
 }
@@ -67,11 +69,55 @@
 /* ------------------ ANIMACIÓN DE TEXTO ------------------ */
 @keyframes glowText {
   from {
-    text-shadow: 0 0 6px rgba(255, 94, 0, 0.153),
+    text-shadow:
+      0 0 6px rgba(255, 94, 0, 0.153),
       0 0 12px rgba(255, 94, 0, 0.25);
   }
   to {
-    text-shadow: 0 0 12px rgba(255, 94, 0, 0.308),
+    text-shadow:
+      0 0 12px rgba(255, 94, 0, 0.308),
       0 0 24px rgba(255, 94, 0, 0.292);
+  }
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+  .servicios {
+    padding: 4rem 1rem;
+  }
+
+  .servicios__titulo {
+    font-size: 2rem;
+  }
+
+  .servicios__descripcion {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .servicios__boton {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicios {
+    padding: 3rem 0.75rem;
+  }
+
+  .servicios__titulo {
+    font-size: 1.75rem;
+  }
+
+  .servicios__descripcion {
+    font-size: 0.95rem;
+  }
+
+  .servicios__boton {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    width: 100%;
+    max-width: 280px;
   }
 }

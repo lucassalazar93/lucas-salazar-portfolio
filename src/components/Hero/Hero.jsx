@@ -99,12 +99,14 @@ const Hero = () => {
             ref={actionsRef}
             className={`hero__actions ${actionsVisible ? "is-visible" : ""}`}
           >
+            {/*
             <a
               href="https://lukbyte-my-website.vercel.app/servicios/ejemplos#"
               className="btn btn--primary"
             >
               Ver mis proyectos
             </a>
+            */}
             <a
               href="/CV_Lucas_Salazar_Frontend_Developer.pdf"
               className="btn btn--outline"
