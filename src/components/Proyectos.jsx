@@ -66,9 +66,17 @@ const proyectos = [
     detalles: "React · Vite · EmailJS — 300+ leads en la primera semana.",
     estado: "Finalizado",
   },
+  {
+    icono: "/images/mandipos-glow.png",
+    titulo: "MandiPOS - Plataforma POS para Restaurantes",
+    descripcion:
+      "Sistema POS completo para restaurantes con gestión de pedidos, domicilios, inventario y control financiero, diseñado para optimizar operaciones en tiempo real.",
+    detalles:
+      "Next.js · NestJS · PostgreSQL · Prisma · Multi-tenant · Tiempo real · Arquitectura escalable",
+    estado: "En implementación",
+  },
 ];
 
-/* ─── Variantes Framer Motion ───────────────── */
 const gridVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -82,9 +90,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
-/* ─── Helpers (sin cambiar estructura) ───────── */
 function normalizarEstado(estado) {
-  // Normaliza para evitar errores por tildes/espacios/cambios futuros
   return String(estado || "")
     .trim()
     .toLowerCase()
@@ -95,13 +101,10 @@ function normalizarEstado(estado) {
 function claseEstado(estado) {
   const e = normalizarEstado(estado);
 
-  // Mantén tus clases existentes + agrega una para "Caso de Éxito"
   if (e === "finalizado") return "estado-finalizado";
   if (e === "en desarrollo" || e === "en-desarrollo" || e === "endesarrollo")
     return "estado-en-desarrollo";
 
-  // Nuevos estados (corporativo / caso de éxito / etc.)
-  // 👉 Asegúrate en el CSS de tener estilos para .estado-exito (o al menos que no oculte)
   if (
     e === "caso de exito" ||
     e === "proyecto corporativo" ||
@@ -109,7 +112,6 @@ function claseEstado(estado) {
   )
     return "estado-exito";
 
-  // Fallback: siempre visible (no se daña el render)
   return "estado-en-desarrollo";
 }
 
@@ -120,7 +122,6 @@ const Proyectos = () => (
       “Estos son más que líneas de código. Son ideas que se volvieron reales.”
     </p>
 
-    {/* Grid animado */}
     <motion.div
       className="proyectos__grid"
       variants={gridVariants}
@@ -134,12 +135,17 @@ const Proyectos = () => (
           key={p.titulo}
           variants={cardVariants}
         >
-          <img src={p.icono} alt={p.titulo} className="proyecto__icono" />
+          <img
+            src={p.icono}
+            alt={p.titulo}
+            className={`proyecto__icono ${
+              p.titulo.includes("MandiPOS") ? "proyecto__icono--mandipos" : ""
+            }`}
+          />
           <h3>{p.titulo}</h3>
           <p className="descripcion">{p.descripcion}</p>
           <span className="detalles">{p.detalles}</span>
 
-          {/* Estado */}
           <span className={`estado ${claseEstado(p.estado)}`}>{p.estado}</span>
         </motion.article>
       ))}

@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 
 /* ─── Frases que rotan ─────────────────────────────── */
 const phrases = [
-  "No solo escribo código; diseño soluciones digitales con propósito y escalabilidad. Como desarrollador de software, fusiono arquitectura limpia, inteligencia artificial y diseño emocional para construir interfaces que no solo conectan con las personas, sino que impulsan resultados de negocio medibles e impactos reales en la industria.",
+  "No solo escribo código: construyo soluciones digitales con propósito y escalabilidad. Como desarrollador fullstack, combino arquitectura limpia, inteligencia artificial y experiencia de usuario para crear productos que conectan con las personas y generan resultados reales de negocio.",
 ];
 
 /* ─── Variantes de Framer Motion ───────────────────── */
@@ -75,7 +75,7 @@ const Hero = () => {
             Lucas Salazar
           </h1>
           <p className="hero__subtitle">
-            Frontend Developer | React & TypeScript Specialist
+            Fullstack Developer | Construyo productos SaaS y sistemas reales
           </p>
 
           {/* Swiper frases */}
@@ -108,7 +108,7 @@ const Hero = () => {
             </a>
             */}
             <a
-              href="/CV_Lucas_Salazar_Frontend_Developer.pdf"
+              href="/Lucas_SalazarVilla_CV2026 Fullstack Developer.pdf"
               className="btn btn--outline"
               download
             >

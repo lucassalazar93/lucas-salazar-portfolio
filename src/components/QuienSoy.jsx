@@ -60,28 +60,25 @@ const QuienSoy = () => {
           {/* Inicio */}
           <p>
             ¿Sabes qué me impulsó al desarrollo? La certeza de que una línea de
-            código bien ejecutada tiene el poder de simplificar la vida de una
-            persona y optimizar el rendimiento de un negocio. No construyo solo
-            interfaces; diseño soluciones que resuelven problemas reales.
+            código bien pensada puede simplificar la vida de una persona y
+            mejorar el rendimiento de un negocio. No construyo solo interfaces;
+            diseño soluciones que resuelven problemas reales.
           </p>
 
           {/* Cuerpo */}
           <p>
-            Soy Lucas, un desarrollador con mentalidad emprendedora que
-            equilibra lógica, diseño y agilidad técnica. Mi paso por sectores
+            Soy Lucas, desarrollador con mentalidad emprendedora que equilibra
+            lógica, diseño y agilidad técnica. Mi experiencia en entornos
             industriales y proyectos freelance me ha enseñado que un producto
-            digital solo es exitoso si es funcional, intuitivo y, sobre todo,
-            escalable.
+            digital solo es valioso cuando es funcional, intuitivo y escalable.
           </p>
 
           {/* Diferencial */}
           <p>
             Mi enfoque no es crear “sitios web”, sino desarrollar ecosistemas
-            digitales con propósito. Utilizo la Inteligencia Artificial como mi
-            mayor aliada estratégica para acelerar ciclos de desarrollo y
-            garantizar la máxima calidad en cada entrega. Mi motor es la
-            satisfacción de transformar una necesidad compleja en una
-            herramienta útil, estética y de alto impacto.
+            digitales con propósito. Utilizo la inteligencia artificial como
+            aliada estratégica para optimizar procesos, acelerar el desarrollo y
+            construir soluciones de alto impacto que generan valor real.
           </p>
 
           {/* Pilares */}

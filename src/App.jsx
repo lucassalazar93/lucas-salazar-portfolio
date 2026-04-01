@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
 
-/* ✅ Importación global de fuentes personalizadas */
+
 import "./assets/fonts/fonts.css";
 
-/* ✅ Componentes principales */
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import QuienSoy from "./components/QuienSoy";
@@ -17,7 +16,7 @@ import Footer from "./components/Footer/Footer";
 import Certificados from "./components/Certificados";
 import Servicios from "./components/Servicios";
 
-/* ✅ Futuras secciones: sobre mí, proyectos, contacto, etc. */
+
 
 function App() {
   return (

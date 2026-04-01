@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./PersonalTouch.css";
-import firmaLucas from "../assets/firma_lucas.svg"; // Ajusta la ruta si es necesario
+import firmaLucas from "../assets/firma_lucas.svg"; 
 
 const PersonalTouch = () => {
   useEffect(() => {
@@ -12,7 +12,7 @@ const PersonalTouch = () => {
   return (
     <section className="personal-touch" id="personal">
       <div className="container">
-        {/* FRÁSE PRINCIPAL: Más contundente */}
+
         <blockquote
           className="personal-quote"
           data-aos="zoom-in"
@@ -25,7 +25,7 @@ const PersonalTouch = () => {
           las máquinas funcionen."
         </blockquote>
 
-        {/* PÁRRAFO PRINCIPAL: Conecta tu técnica con tu sentir */}
+
         <p className="texto-personal" data-aos="fade-up" data-aos-delay="100">
           Mi trayectoria en el ecosistema de{" "}
           <strong>Crystal (Gef, Punto Blanco, Baby Fresh)</strong> me enseñó que
@@ -44,7 +44,7 @@ const PersonalTouch = () => {
           negocio y la emoción de su usuario final.
         </p>
 
-        {/* FRASE DE CIERRE: Inspiradora */}
+
         <p className="cierre-cita" data-aos="fade-up" data-aos-delay="200">
           Porque al final del día, el mejor software es aquel que se siente
           invisible
@@ -52,7 +52,7 @@ const PersonalTouch = () => {
           <strong>porque fue diseñado con empatía y propósito.</strong>
         </p>
 
-        {/* FIRMA */}
+
         <div className="firma-wrapper" data-aos="fade-in" data-aos-delay="300">
           <hr className="firma-line" />
           <img
