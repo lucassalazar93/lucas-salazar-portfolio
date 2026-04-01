@@ -1,33 +1,55 @@
 # 👨‍💻 Lucas Salazar — Portafolio Profesional
 
-¡Bienvenido a mi portafolio personal como desarrollador web!  
-Soy **Lucas Salazar**, tecnólogo en Análisis y Desarrollo de Software, apasionado por la innovación, el aprendizaje continuo y la inteligencia artificial como aliada en nuestras soluciones digitales.
+> Construyo productos digitales que resuelven problemas reales y generan impacto en negocio.
+
+Soy **Lucas Salazar**, desarrollador fullstack especializado en React y TypeScript, con enfoque en arquitectura limpia, escalabilidad y desarrollo de soluciones con propósito.
+
+---
 
 ## 🚀 Sobre mí
 
-- 💼 Desarrollador fullstack enfocado en proyectos con impacto real.
-- 🧠 Apasionado por la IA aplicada al desarrollo web.
-- 📚 En formación continua, siempre explorando herramientas que mejoran productividad y resultados.
-- 💡 Creo herramientas que no solo funcionan, sino que conectan y convierten.
+- 💼 Desarrollo soluciones digitales orientadas a negocio, no solo interfaces
+- 🧠 Integro inteligencia artificial para optimizar procesos y acelerar resultados
+- 📈 Experiencia en proyectos reales y desarrollo de productos propios
+- 💡 Enfoque en crear herramientas funcionales, intuitivas y escalables
 
-## 🛠️ Tecnologías y herramientas destacadas
+---
 
-- **Frontend**: React, Vite, Tailwind, HTML5, CSS3, JavaScript
-- **Backend**: Node.js, Express
-- **Bases de datos**: MySQL, MongoDB
-- **Otras**: GitHub, Figma, Canva, Adobe XD, Midjourney, IA aplicada
+## 🧩 Proyectos Destacados
+
+### 🔥 MandiPOS
+
+Sistema POS para restaurantes con gestión de pedidos, domicilios, inventario y control financiero en tiempo real.  
+**Stack:** Next.js · NestJS · PostgreSQL · Prisma · Tiempo real · Multi-sede
+
+### ⚡ ORIX
+
+Plataforma SaaS para gestión de turnos en negocios como barberías y centros de estética.  
+**Stack:** React · Node.js · Firebase · SaaS · Multi-tenant · PWA
+
+---
+
+## 🛠️ Tecnologías y herramientas
+
+- **Frontend**: React · TypeScript · JavaScript · HTML5 · CSS3
+- **Backend**: Node.js · Express · NestJS
+- **Bases de datos**: PostgreSQL · MySQL · MongoDB
+- **Otras**: Git · GitHub · Figma · IA aplicada
+
+---
 
 ## 🌐 Sitio Web
 
-📍 [lucassalazar93.github.io/lucas-salazar-portfolio](https://lucassalazar93.github.io/lucas-salazar-portfolio)
+📍 https://lucassalazar93.github.io/lucas-salazar-portfolio
+
+---
 
 ## 📬 Contacto
 
 - ✉️ lucassalazar.work93@gmail.com
-
-- 💬 [WhatsApp profesional](https://wa.me/573150399322)
-- 💼 [LinkedIn](https://www.linkedin.com/in/lucas-salazar-722b79319/)
+- 💬 https://wa.me/573150399322
+- 💼 https://www.linkedin.com/in/lucas-salazar-722b79319/
 
 ---
 
-> _Gracias por visitar mi portafolio. Si te interesa trabajar conmigo o tienes alguna idea para colaborar, ¡estaré encantado de conversar!_
+> Gracias por visitar mi portafolio. Si te interesa trabajar conmigo o tienes una idea para colaborar, estaré encantado de conversar.
