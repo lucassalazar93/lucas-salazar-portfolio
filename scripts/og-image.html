@@ -1,0 +1,100 @@
+<!doctype html>
+<!--
+  Plantilla de la imagen que aparece al compartir el enlace (WhatsApp,
+  LinkedIn, etc.). No forma parte del sitio: Vite solo la sirve en desarrollo.
+
+  Para regenerar public/og-image.jpg:
+    1. npm run dev
+    2. Abrir http://localhost:5173/scripts/og-image.html con la ventana
+       a 1200 x 630 y capturar la página.
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Imagen para compartir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "Norwester";
+        src: url("/src/assets/fonts/norwester-v1.2/webfonts/norwester.woff")
+          format("woff");
+      }
+
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+        color: #f2f2f2;
+        background:
+          radial-gradient(58% 80% at 90% 8%, rgba(255, 94, 0, 0.9), rgba(255, 94, 0, 0) 65%),
+          radial-gradient(55% 75% at 72% 112%, rgba(255, 123, 0, 0.65), rgba(230, 74, 0, 0) 68%),
+          radial-gradient(70% 60% at 38% 38%, #1e2940, rgba(30, 41, 64, 0) 70%),
+          linear-gradient(#141c2e 0%, #101726 45%, #0d0d0d 100%);
+      }
+
+      .texto {
+        position: absolute;
+        left: 72px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .nombre {
+        font-family: "Norwester", sans-serif;
+        font-size: 160px;
+        line-height: 0.9;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      .nombre span {
+        display: block;
+      }
+
+      .nombre .acento {
+        color: #ff5e00;
+      }
+
+      .rol {
+        margin-top: 30px;
+        font-size: 43px;
+        font-weight: 700;
+      }
+
+      .bajada {
+        margin-top: 8px;
+        font-size: 29px;
+        font-weight: 500;
+        color: #c9d0dc;
+      }
+
+      .retrato {
+        position: absolute;
+        right: -34px;
+        bottom: 0;
+        height: 620px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="texto">
+      <p class="nombre"><span>Lucas</span><span class="acento">Salazar</span></p>
+      <p class="rol">Fullstack Developer</p>
+      <p class="bajada">Productos SaaS y sistemas reales</p>
+    </div>
+    <img class="retrato" src="/src/assets/img/lucas-hero.webp" alt="" />
+  </body>
+</html>
