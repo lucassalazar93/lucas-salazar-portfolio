@@ -1,6 +1,9 @@
 import mandingasLa37 from "../assets/img/marcas/mandingas-la-37.webp";
 import mundoMandingas from "../assets/img/marcas/mundo-mandingas.webp";
 import crystal from "../assets/img/marcas/crystal.webp";
+import galax from "../assets/img/marcas/galax.webp";
+import babyFresh from "../assets/img/marcas/baby-fresh.webp";
+import lukasExpress from "../assets/img/marcas/lukas-express.webp";
 import primotos from "../assets/img/proyectos/primotos.webp";
 import elvore from "../assets/img/proyectos/elvore.webp";
 import noreQuintero from "../assets/img/proyectos/sabor-a-felicidad.webp";
@@ -21,5 +24,8 @@ export const marcas = [
   { nombre: "Crystal S.A.S.", logo: crystal },
   { nombre: "Gef", logo: gef, placa: "#000000" },
   { nombre: "Punto Blanco", logo: puntoBlanco },
+  { nombre: "Galax", logo: galax },
+  { nombre: "Baby Fresh", logo: babyFresh },
   { nombre: "Soy Arte", logo: soyArte },
+  { nombre: "Lukas Express", logo: lukasExpress },
 ];
