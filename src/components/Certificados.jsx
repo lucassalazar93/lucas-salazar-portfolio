@@ -1,115 +1,119 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useVelocity,
+} from "framer-motion";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import "./Certificados.css";
+import SplitText from "./ui/SplitText";
+import { useFinePointer } from "../hooks/usePinned";
+import { certificados } from "../data/certificados";
 
-const certificados = [
-  {
-    icono: "/images/certificados/diploma-basico-programacion.jpg",
-    titulo: "Programación Básica",
-    entidad: "Platzi",
-    fecha: "Septiembre 2022",
-    descripcion:
-      "Fundamentos esenciales de lógica, estructuras de control y pensamiento computacional. El inicio sólido que impulsó mi carrera como desarrollador.",
-    enlace: "/images/certificados/diploma-basico-programacion.pdf",
-  },
-  {
-    icono: "/images/certificados/diploma-c-sharp-poo.jpg",
-    titulo: "Programación Orientada a Objetos en C#",
-    entidad: "Platzi",
-    fecha: "Julio 2025",
-    descripcion:
-      "Aprendí los principios clave de la POO: encapsulamiento, herencia, polimorfismo y abstracción, aplicados en C# con buenas prácticas.",
-    enlace: "/images/certificados/diploma-c-sharp-poo.pdf",
-  },
-  {
-    icono: "/images/certificados/diploma-csharp.jpg",
-    titulo: "C# desde cero",
-    entidad: "Platzi",
-    fecha: "Julio 2025",
-    descripcion:
-      "Desarrollé habilidades fundamentales en C# para construir aplicaciones sólidas con sintaxis clara, estructuras de control y lógica estructurada.",
-    enlace: "/images/certificados/diploma-csharp.pdf",
-  },
-  {
-    icono: "/images/certificados/diploma-linq .jpg",
-    titulo: "Manejo de Datos con LINQ",
-    entidad: "Platzi",
-    fecha: "Julio 2025",
-    descripcion:
-      "Curso enfocado en el uso de LINQ para consultar y transformar datos en C#. Aprendí a optimizar la manipulación de colecciones con sintaxis declarativa y expresiones lambda.",
-    enlace: "/images/certificados/diploma-linq.pdf",
-  },
-  {
-    icono: "/images/certificados/diploma-arquitectura-software.jpg",
-    titulo: "Fundamentos de Arquitectura de Software",
-    entidad: "Platzi",
-    fecha: "Julio 2025",
-    descripcion:
-      "Certificación técnica en el diseño de sistemas escalables y mantenibles. Aprendí a seleccionar estructuras de software adecuadas basándome en requerimientos de negocio y atributos de calidad.",
-    enlace: "/images/certificados/diploma-arquitectura-software-2025.pdf",
-  },
-];
+const EASE = [0.16, 1, 0.3, 1];
+const SPRING = { stiffness: 260, damping: 26, mass: 0.5 };
 
-const gridVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0 },
-  },
-};
+const Certificados = () => {
+  const finePointer = useFinePointer();
+  const [activo, setActivo] = useState(null);
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-};
+  /* Vista previa del diploma que sigue al cursor y se inclina al moverse */
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, SPRING);
+  const springY = useSpring(y, SPRING);
+  const rotate = useTransform(useVelocity(springX), [-1800, 1800], [-14, 14]);
 
-const Certificados = () => (
-  <section className="certificados" id="certificados">
-    <h2 className="certificados__titulo"> Certificados</h2>
-    <p className="certificados__subtitulo">
-      “Cada curso es una chispa que alimenta mi crecimiento profesional.”
-    </p>
+  const handleMove = (e) => {
+    x.set(e.clientX);
+    y.set(e.clientY);
+  };
 
-    <motion.div
-      className="certificados__grid"
-      variants={gridVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      {certificados.map((c) => (
-        <motion.article
-          className="certificado__card"
-          key={c.titulo}
-          variants={cardVariants}
-          whileTap={{ scale: 0.97 }}
-        >
-          <img
-            src={c.icono}
-            alt={c.titulo}
-            className="certificado__icono"
-            loading="lazy"
-          />
-          <h3>{c.titulo}</h3>
-          <p className="entidad">{c.entidad}</p>
-          <span className="fecha">{c.fecha}</span>
-          {c.descripcion && <p className="descripcion">{c.descripcion}</p>}
-          <a
-            href={c.enlace}
-            className="certificado__link"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <section className="certificados" id="certificados">
+      <header className="certificados__header">
+        <h2 className="display certificados__titulo">
+          <SplitText text="Certificados" inView />
+        </h2>
+        <p className="lead certificados__subtitulo">
+          “Cada curso es una chispa que alimenta mi crecimiento profesional.”
+        </p>
+      </header>
+
+      <ul
+        className="certificados__lista"
+        onPointerMove={finePointer ? handleMove : undefined}
+        onPointerLeave={() => setActivo(null)}
+      >
+        {certificados.map((c, i) => (
+          <motion.li
+            key={c.titulo}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: EASE, delay: i * 0.05 }}
           >
-            Ver certificado
-          </a>
-        </motion.article>
-      ))}
-    </motion.div>
-  </section>
-);
+            <a
+              href={c.enlace}
+              className="certificado"
+              target="_blank"
+              rel="noopener noreferrer"
+              onPointerEnter={() => setActivo(i)}
+            >
+              <img
+                src={c.icono}
+                alt=""
+                className="certificado__thumb"
+                loading="lazy"
+              />
+              <div className="certificado__main">
+                <h3>{c.titulo}</h3>
+                <p className="descripcion">{c.descripcion}</p>
+              </div>
+              <p className="certificado__meta">
+                <span className="entidad">{c.entidad}</span>
+                <span className="fecha">{c.fecha}</span>
+              </p>
+              <span className="certificado__link">
+                Ver certificado
+                <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
+              </span>
+            </a>
+          </motion.li>
+        ))}
+      </ul>
+
+      {finePointer && (
+        <motion.div
+          className="certificados__preview"
+          aria-hidden="true"
+          style={{ x: springX, y: springY, rotate }}
+        >
+          <motion.div
+            className="certificados__preview-inner"
+            initial={false}
+            animate={{
+              opacity: activo === null ? 0 : 1,
+              scale: activo === null ? 0.6 : 1,
+            }}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            {certificados.map((c, i) => (
+              <img
+                key={c.titulo}
+                src={c.icono}
+                alt=""
+                loading="lazy"
+                style={{ opacity: i === activo ? 1 : 0 }}
+              />
+            ))}
+          </motion.div>
+        </motion.div>
+      )}
+    </section>
+  );
+};
 
 export default Certificados;

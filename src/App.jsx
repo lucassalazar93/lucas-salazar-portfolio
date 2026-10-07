@@ -1,38 +1,34 @@
 import React from "react";
-import "./App.css";
-
-
-import "./assets/fonts/fonts.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-import QuienSoy from "./components/QuienSoy";
 import Proyectos from "./components/Proyectos";
-import CintaNeon from "./components/CintaNeon";
+import Marcas from "./components/Marcas";
+import QuienSoy from "./components/QuienSoy";
 import Tecnologias from "./components/Tecnologias";
+import CintaNeon from "./components/CintaNeon";
+import Certificados from "./components/Certificados";
 import PersonalTouch from "./components/PersonalTouch";
 import ContactoSincero from "./components/ContactoSincero";
-import Footer from "./components/Footer/Footer";
-import Certificados from "./components/Certificados";
-import Servicios from "./components/Servicios";
-
-
+import ScrollProgress from "./components/ui/ScrollProgress";
 
 function App() {
   return (
     <>
+      <div className="grain" aria-hidden="true" />
+      <ScrollProgress />
       <Navbar />
-      <Hero />
-      <CintaNeon />
-      <QuienSoy />
-      <Proyectos />
-      <Certificados />
-      <Tecnologias />
-      <Servicios />
-      <CintaNeon />
-      <PersonalTouch />
+      <main>
+        <Hero />
+        <Proyectos />
+        <Marcas />
+        <QuienSoy />
+        <Tecnologias />
+        <CintaNeon />
+        <Certificados />
+        <PersonalTouch />
+      </main>
       <ContactoSincero />
-      <Footer />
     </>
   );
 }

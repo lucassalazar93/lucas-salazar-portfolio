@@ -3,37 +3,60 @@
 ─────────────────────────────── */
 @font-face {
   font-family: "Norwester";
-  src: url("../assets/fonts/norwester.otf") format("opentype");
-  font-weight: bold;
+  src:
+    url("../assets/fonts/norwester-v1.2/webfonts/norwester.woff") format("woff"),
+    url("../assets/fonts/norwester-v1.2/norwester.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap");
 
 /* ───────────────────────────────
    2. VARIABLES GLOBALES
 ─────────────────────────────── */
 :root {
-  /* 🎨 Paleta profesional */
-  --color-bg-primary: #101726; /* Fondo principal */
-  --color-bg-secondary: #1e2940; /* Fondo alternativo */
-  --color-text-light: #f2f2f2; /* Texto claro principal */
-  --color-text-muted: #737373; /* Texto gris neutro */
-  --color-text-dark: #0d0d0d; /* Casi negro */
+  /* 🎨 Paleta de marca */
+  --color-bg: #0d0d0d; /* Fondo principal */
+  --color-navy: #101726; /* Fondo alternativo */
+  --color-navy-soft: #1e2940; /* Superficies elevadas */
+  --color-accent: #ff5e00; /* Único acento */
+  --color-accent-deep: #e64a00;
+  --color-accent-warm: #ff7b00;
+  --color-text: #f2f2f2; /* Texto principal */
+  --color-text-dim: #a7b0c0; /* Texto secundario (AA sobre navy) */
+  --color-ink: #0d0d0d; /* Texto sobre naranja */
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-line-strong: rgba(255, 255, 255, 0.24);
 
-  /* 🎯 Acento neutro y flexible (puedes personalizarlo luego) */
-  --color-accent: #1e2940;
-  --color-accent-hover: #101726;
+  /* Tipografías. Fjalla One solo entra en los caracteres que Norwester
+     no tiene (tildes, Ñ, ¿¡); se carga recortada desde index.html */
+  --font-display: "Norwester", "Fjalla One", "Arial Narrow", sans-serif;
+  --font-base: "Montserrat", system-ui, sans-serif;
+  --fs-display: clamp(2.5rem, 6.2vw, 5.75rem);
 
-  /* Tipografías */
-  --font-title: "Norwester", sans-serif;
-  --font-subtitle: "Playfair Display", serif;
-  --font-base: "Montserrat", sans-serif;
+  /* Forma: botones pill, tarjetas 20px */
+  --radius-card: 20px;
+  --radius-pill: 999px;
 
-  /* Layout */
-  --max-width: 1180px;
-  --section-padding: 4rem;
+  /* Layout. El margen lateral respeta el notch en horizontal */
+  --gutter: max(
+    clamp(1.25rem, 4vw, 4rem),
+    env(safe-area-inset-left, 0px),
+    env(safe-area-inset-right, 0px)
+  );
+  --nav-h: 72px;
+  --section-space: clamp(5rem, 11vw, 10rem);
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Capas */
+  --z-raised: 2;
+  --z-preview: 80;
+  --z-nav: 100;
+  --z-menu: 110;
+  --z-grain: 120;
 }
 
 /* ───────────────────────────────
@@ -48,168 +71,264 @@
 }
 
 html {
+  position: relative; /* referencia para los cálculos de scroll de Framer Motion */
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-navy-soft) var(--color-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: var(--font-base);
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-light);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
+  line-height: 1.65;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ───────────────────────────────
-   4. UTILIDADES GENERALES
-─────────────────────────────── */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
 img {
   max-width: 100%;
   display: block;
 }
 
 a {
-  color: var(--color-accent);
+  color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-a:hover {
-  color: var(--color-accent-hover);
+ul,
+ol {
+  list-style: none;
+}
+
+/* Controles: sin retraso de doble toque ni selección de texto al mantener */
+a,
+button {
+  touch-action: manipulation;
+}
+
+button,
+.btn,
+.navbar a,
+.contact-links a {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 button {
   font-family: inherit;
+  color: inherit;
   cursor: pointer;
   border: none;
-  outline: none;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
+  background: none;
 }
 
-section {
-  padding: var(--section-padding) 1rem;
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-.container {
-  width: min(90%, var(--max-width));
-  margin-inline: auto;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ───────────────────────────────
-   5. TIPOGRAFÍA / JERARQUÍA
+   4. TIPOGRAFÍA / JERARQUÍA
 ─────────────────────────────── */
-h1 {
-  font-family: var(--font-title);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-}
-
-h2,
-h3 {
-  font-family: var(--font-subtitle);
+.display {
+  font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.3;
-  color: var(--color-text-light);
+  font-size: var(--fs-display);
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-wrap: balance;
 }
 
-p,
-li,
-span {
-  font-family: var(--font-base);
-  font-weight: 300;
-  color: var(--color-text-muted);
+.lead {
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  color: var(--color-text-dim);
+  max-width: 60ch;
 }
 
 /* ───────────────────────────────
-   6. BOTONES
+   5. BOTONES
 ─────────────────────────────── */
 .btn {
-  display: inline-block;
-  padding: 0.85rem 1.8rem;
-  border-radius: 12px;
+  --btn-bg: transparent;
+  --btn-fg: var(--color-text);
+  --btn-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 3.25rem;
+  padding: 0 1.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-base);
+  font-size: 0.95rem;
   font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
-  border: none;
-  font-family: inherit;
+  transition:
+    transform 0.18s var(--ease-out),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--sm {
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  font-size: 0.875rem;
 }
 
 .btn--primary {
-  background: var(--color-accent);
-  color: var(--color-text-light);
-}
-
-.btn--primary:hover {
-  background: var(--color-accent-hover);
-  transform: translateY(-2px);
+  --btn-bg: var(--color-accent);
+  --btn-fg: var(--color-ink);
 }
 
 .btn--outline {
-  border: 2px solid var(--color-accent);
-  background: transparent;
+  --btn-border: var(--color-line-strong);
+}
+
+.btn--ink {
+  --btn-bg: var(--color-ink);
+  --btn-fg: var(--color-text);
+}
+
+/* Texto que rueda al pasar el cursor */
+.btn__roll {
+  position: relative;
+  display: inline-block;
+  height: 1.3em;
+  line-height: 1.3;
+  overflow: hidden;
+}
+
+.btn__roll > span {
+  display: block;
+  transition: transform 0.45s var(--ease-out);
+}
+
+/* El duplicado es decorativo: texto alternativo vacío para lectores */
+.btn__roll > span::after {
+  content: attr(data-text);
+  content: attr(data-text) / "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.btn__icon {
+  display: grid;
+  place-items: center;
+  transition: transform 0.45s var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover .btn__roll > span {
+    transform: translateY(-100%);
+  }
+
+  .btn:hover .btn__icon {
+    transform: translate(2px, -2px);
+  }
+
+  .btn--primary:hover {
+    --btn-bg: var(--color-accent-warm);
+  }
+
+  .btn--outline:hover {
+    --btn-border: var(--color-accent);
+    --btn-fg: var(--color-accent);
+  }
+}
+
+/* ───────────────────────────────
+   6. ESTADOS DE PROYECTO
+─────────────────────────────── */
+.estado {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-strong);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.estado--corporativo {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.estado--en-curso {
+  border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-.btn--outline:hover {
+/* El más fuerte: producto ya vendido y en operación */
+.estado--mercado {
+  border-color: var(--color-accent);
   background: var(--color-accent);
-  color: var(--color-text-light);
+  color: var(--color-ink);
 }
 
 /* ───────────────────────────────
-   7. RESPONSIVE GLOBAL
+   7. TEXTURA Y UTILIDADES
 ─────────────────────────────── */
-@media (max-width: 768px) {
-  :root {
-    --section-padding: 3rem;
-  }
-
-  body {
-    font-size: 15px;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-  }
-
-  section {
-    padding: var(--section-padding) 0.75rem;
-  }
-
-  .btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.95rem;
-  }
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@media (max-width: 480px) {
-  :root {
-    --section-padding: 2.5rem;
-  }
-
-  body {
-    font-size: 14px;
-  }
-
-  .btn {
-    padding: 0.75rem 1.3rem;
-    font-size: 0.9rem;
-  }
+.magnetic {
+  display: inline-block;
 }
 
 /* ───────────────────────────────
-   8. OPTIMIZACIONES DE PERFORMANCE
+   8. ACCESIBILIDAD / PERFORMANCE
 ─────────────────────────────── */
-
-/* Reducir animaciones en dispositivos con poco rendimiento */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
@@ -219,13 +338,8 @@ span {
   }
 }
 
-/* Mejorar scroll en móviles */
+/* Prevenir zoom en inputs en iOS */
 @media (max-width: 768px) {
-  * {
-    -webkit-tap-highlight-color: rgba(255, 94, 0, 0.2);
-  }
-
-  /* Prevenir zoom en inputs en iOS */
   input,
   select,
   textarea {

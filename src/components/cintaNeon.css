@@ -1,57 +1,48 @@
-/* ───── Cinta Neon Responsiva ───── */
 .cinta-neon {
-  width: 100%;
   overflow: hidden;
-  background-color: #0d0d0d;
-  padding: 0.75rem 0;
-  border-top: 1px solid #ff5e00;
-  border-bottom: 1px solid #ff5e00;
-  position: relative;
-  z-index: 2;
-}
-
-.cinta-neon__inner {
-  display: flex;
-  white-space: nowrap;
-  flex-wrap: nowrap;
+  padding: clamp(1.75rem, 3.2vw, 3rem) 0;
+  border-block: 1px solid var(--color-line);
+  background: var(--color-bg);
 }
 
 .cinta-neon__track {
   display: flex;
-  flex-shrink: 0;
-  min-width: 100%;
-  animation: moverCinta 20s linear infinite;
-  gap: 4rem;
+  width: max-content;
+  will-change: transform;
 }
 
-.cinta-neon__track span {
-  font-size: clamp(0.85rem, 2.5vw, 1.2rem);
-  font-weight: 600;
-  color: #ff5e00;
-  text-shadow: 0 0 5px #ff5e004e, 0 0 10px #ff5e0034, 0 0 20px #ff5e0060;
-  font-family: "Montserrat", sans-serif;
-  letter-spacing: 1px;
+.cinta-neon__group {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+}
+
+.cinta-neon__group span {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.4vw, 4.25rem);
+  line-height: 1.25;
+  text-transform: uppercase;
   white-space: nowrap;
-  padding: 0 0.5rem;
+  color: var(--color-text);
 }
 
-/* ───── Animación fluida ───── */
-@keyframes moverCinta {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.cinta-neon__group .is-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-text);
 }
 
-/* ───── Ajuste responsivo extra ───── */
-@media (max-width: 480px) {
+.cinta-neon__group svg {
+  flex: none;
+  width: clamp(1.4rem, 3vw, 2.75rem);
+  height: auto;
+  color: var(--color-accent);
+}
+
+/* Sin movimiento: la cinta se puede recorrer a mano */
+@media (prefers-reduced-motion: reduce) {
   .cinta-neon {
-    padding: 0.5rem 0;
-  }
-
-  .cinta-neon__track {
-    gap: 2rem;
+    overflow-x: auto;
   }
 }

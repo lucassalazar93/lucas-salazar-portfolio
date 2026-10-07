@@ -1,0 +1,18 @@
+.split__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* El padding superior deja espacio a las tildes de las mayúsculas */
+.split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-top: 0.2em;
+  margin-top: -0.2em;
+}
+
+.split__char {
+  display: inline-block;
+  will-change: transform;
+}

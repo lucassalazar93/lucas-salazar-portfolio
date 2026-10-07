@@ -1,156 +1,282 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
 import "./Proyectos.css";
+import SplitText from "./ui/SplitText";
+import { useMotionMode } from "../hooks/usePinned";
+import { claseEstado, destacados, otros } from "../data/proyectos";
 
-/* ─── Data de proyectos ─────────────────────── */
-const proyectos = [
-  {
-    icono: "/images/tienda-futuro-multibrand.png",
-    titulo: "Tienda del Futuro Multimarca",
-    descripcion:
-      "Experiencia omnicanal para Gef, Punto Blanco y Baby Fresh con visualización de outfits mediante IA y checkout unificado.",
-    detalles:
-      "React · IA Generativa · Shopify API · Arquitectura Multimarca · QR Payments.",
-    estado: "Proyecto Corporativo",
-  },
-  {
-    icono: "/images/pqrs-multibrand.png", // Usa un icono que represente soporte o un sistema centralizado
-    titulo: "Sistema PQRS Multimarca",
-    descripcion:
-      "Plataforma centralizada de atención al cliente para el ecosistema de marcas de Crystal (Gef, Punto Blanco, Baby Fresh, Galax).",
-    detalles: "React · Omnicanalidad · UI Dinámica · Gestión de Datos.",
-    estado: "Proyecto Corporativo",
-  },
-  {
-    icono: "/images/eficiencia-crystal.png",
-    titulo: "Eficiencia Crystal",
-    descripcion:
-      "Sistema industrial para la digitalización de KPIs y monitoreo de rendimiento de producción en tiempo real.",
-    detalles: "React · Data Visualization · PWA · Industrial UX.",
-    estado: "Proyecto Corporativo",
-  },
-  {
-    icono: "/images/orix-glow.png", // Mantén el icono lineal con el resplandor característico
-    titulo: "ORIX - Agenda Inteligente",
-    descripcion:
-      "Ecosistema SaaS para centros de estética, spas y barberías. Permite la creación de tiendas y gestión multicanal de agendas profesionales.",
-    detalles: "React · Node.js · Multi-tenant · SaaS · PWA · Smart Scheduling",
-    estado: "En desarrollo",
-  },
-  {
-    icono: "/images/soy-arte.png",
-    titulo: "Soy Arte",
-    descripcion: "Plataforma que mezcla tecnología, empoderamiento y alma.",
-    detalles: "Node · React · MySQL · css · Framer Motion",
-    estado: "En desarrollo",
-  },
-  {
-    icono: "/images/sabor-a-felicidad.png",
-    titulo: "Nore Quintero",
-    descripcion: "Sistema de pedidos para empresas… con sazón emocional.",
-    detalles:
-      "React · Firebase · EmailAuth — Catálogo visual y gestión gourmet.",
-    estado: "Finalizado",
-  },
-  {
-    icono: "/images/lukbyte.png",
-    titulo: "Lukbyte",
-    descripcion: "Sitio oficial de mi agencia de soluciones digitales.",
-    detalles: "React · Vite · EmailJS · AOS · Framer Motion",
-    estado: "Finalizado",
-  },
-  {
-    icono: "/images/ia.png",
-    titulo: "Hackea la IA",
-    descripcion: "Una landing que convirtió curiosidad en acción.",
-    detalles: "React · Vite · EmailJS — 300+ leads en la primera semana.",
-    estado: "Finalizado",
-  },
-  {
-    icono: "/images/mandipos-glow.png",
-    titulo: "MandiPOS - Plataforma POS para Restaurantes",
-    descripcion:
-      "Sistema POS completo para restaurantes con gestión de pedidos, domicilios, inventario y control financiero, diseñado para optimizar operaciones en tiempo real.",
-    detalles:
-      "Next.js · NestJS · PostgreSQL · Prisma · Multi-tenant · Tiempo real · Arquitectura escalable",
-    estado: "En implementación",
-  },
-];
+const EASE = [0.16, 1, 0.3, 1];
 
-const gridVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0 },
-  },
-};
+/* ─── Pila con scroll ───────────────────────
+   Cada tarjeta entra desde abajo durante ENTRADA del paso y
+   la anterior se encoge y oscurece mientras tanto. */
+const PASO = 1 / (destacados.length - 1);
+const ENTRADA = 0.75;
+const VH_POR_PASO = 80;
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-};
-
-function normalizarEstado(estado) {
-  return String(estado || "")
-    .trim()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
-
-function claseEstado(estado) {
-  const e = normalizarEstado(estado);
-
-  if (e === "finalizado") return "estado-finalizado";
-  if (e === "en desarrollo" || e === "en-desarrollo" || e === "endesarrollo")
-    return "estado-en-desarrollo";
-
-  if (
-    e === "caso de exito" ||
-    e === "proyecto corporativo" ||
-    e === "corporativo"
-  )
-    return "estado-exito";
-
-  return "estado-en-desarrollo";
-}
-
-const Proyectos = () => (
-  <section className="proyectos" id="proyectos">
-    <h2 className="proyectos__titulo">Proyectos</h2>
-    <p className="proyectos__frase">
-      “Estos son más que líneas de código. Son ideas que se volvieron reales.”
-    </p>
-
-    <motion.div
-      className="proyectos__grid"
-      variants={gridVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      {proyectos.map((p) => (
-        <motion.article
-          className="proyecto__card"
-          key={p.titulo}
-          variants={cardVariants}
-        >
-          <img
-            src={p.icono}
-            alt={p.titulo}
-            className={`proyecto__icono ${
-              p.titulo.includes("MandiPOS") ? "proyecto__icono--mandipos" : ""
-            }`}
-          />
-          <h3>{p.titulo}</h3>
-          <p className="descripcion">{p.descripcion}</p>
-          <span className="detalles">{p.detalles}</span>
-
-          <span className={`estado ${claseEstado(p.estado)}`}>{p.estado}</span>
-        </motion.article>
-      ))}
-    </motion.div>
-  </section>
+const Chips = ({ items }) => (
+  <ul className="chips">
+    {items.map((item) => (
+      <li key={item}>{item}</li>
+    ))}
+  </ul>
 );
+
+const Enlace = ({ proyecto }) => (
+  <a
+    className="proyecto-enlace"
+    href={proyecto.enlace}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Ver ${proyecto.titulo} en vivo`}
+  >
+    Ver en vivo
+    <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
+  </a>
+);
+
+const Tarjeta = ({ proyecto, index, progress, deckProgress, mode }) => {
+  const entra = (index - 1) * PASO;
+  const sale = index * PASO;
+  const y = useTransform(progress, [entra, entra + PASO * ENTRADA], ["104%", "0%"]);
+  const scale = useTransform(progress, [sale, sale + PASO * ENTRADA], [1, 0.93]);
+  const velo = useTransform(progress, [sale, sale + PASO * ENTRADA], [0, 0.6]);
+
+  /* Móvil: las tarjetas se pegan arriba (sticky en CSS) y las de atrás
+     se encogen y oscurecen a medida que llegan las siguientes. */
+  const detras = destacados.length - 1 - index;
+  const desde = (index + 0.35) / destacados.length;
+  const deckScale = useTransform(deckProgress, [desde, 1], [1, 1 - detras * 0.035]);
+  const deckVelo = useTransform(deckProgress, [desde, 1], [0, detras * 0.13]);
+
+  const style =
+    mode === "desktop"
+      ? { y, scale }
+      : mode === "mobile"
+        ? { scale: deckScale, "--i": index }
+        : undefined;
+
+  return (
+    <motion.article className="stack-card" style={style}>
+      <div className="stack-card__emblem">
+        <img
+          src={proyecto.icono}
+          alt=""
+          loading="lazy"
+          style={proyecto.placa ? { background: proyecto.placa } : undefined}
+        />
+      </div>
+
+      <div className="stack-card__body">
+        <span className={`estado ${claseEstado(proyecto.estado)}`}>
+          {proyecto.estado}
+        </span>
+        <h3>{proyecto.titulo}</h3>
+        {proyecto.bajada && (
+          <p className="stack-card__bajada">{proyecto.bajada}</p>
+        )}
+        <p className="stack-card__desc">{proyecto.descripcion}</p>
+        {proyecto.nota && <p className="stack-card__nota">{proyecto.nota}</p>}
+        {proyecto.flujo && (
+          <ol className="stack-card__flujo" aria-label="Flujo del sistema">
+            {proyecto.flujo.map((paso, i) => (
+              <li key={paso}>
+                {i > 0 && <ArrowRight size={12} weight="bold" aria-hidden="true" />}
+                {paso}
+              </li>
+            ))}
+          </ol>
+        )}
+        <Chips items={proyecto.detalles} />
+        {proyecto.enlace && <Enlace proyecto={proyecto} />}
+      </div>
+
+      {mode !== "static" && (
+        <motion.div
+          className="stack-card__velo"
+          style={{ opacity: mode === "desktop" ? velo : deckVelo }}
+        />
+      )}
+    </motion.article>
+  );
+};
+
+/* Foco que sigue al cursor dentro de la tarjeta */
+const handleSpot = (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+};
+
+const Proyectos = () => {
+  const workRef = useRef(null);
+  const frameRef = useRef(null);
+  const mode = useMotionMode();
+  const pinned = mode === "desktop";
+  const [activo, setActivo] = useState(0);
+
+  /* Avance del scroll a lo largo de la baraja (móvil) */
+  const { scrollYProgress: deckProgress } = useScroll({
+    target: frameRef,
+    offset: ["start start", "end end"],
+  });
+
+  const { scrollYProgress } = useScroll({
+    target: workRef,
+    offset: ["start start", "end end"],
+  });
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    restDelta: 0.0005,
+  });
+  const progress = useTransform(smooth, [0.04, 0.9], [0, 1]);
+
+  useMotionValueEvent(progress, "change", (v) => {
+    const index = Math.floor(v / PASO + (1 - ENTRADA / 2));
+    setActivo(Math.min(destacados.length - 1, Math.max(0, index)));
+  });
+
+  /* Móvil: todas las tarjetas de la baraja miden lo que la más alta, para
+     que cada una tape por completo a la anterior al apilarse. */
+  useLayoutEffect(() => {
+    if (mode !== "mobile") return;
+    const frame = frameRef.current;
+    let ancho = 0;
+
+    const igualar = (forzar = false) => {
+      if (!forzar && frame.clientWidth === ancho) return;
+      ancho = frame.clientWidth;
+      frame.style.setProperty("--deck-h", "0px");
+      const alturas = [...frame.children].map((card) => card.offsetHeight);
+      frame.style.setProperty("--deck-h", `${Math.max(...alturas)}px`);
+    };
+
+    igualar();
+    const observer = new ResizeObserver(() => igualar());
+    observer.observe(frame);
+    document.fonts?.ready.then(() => igualar(true));
+
+    return () => {
+      observer.disconnect();
+      frame.style.removeProperty("--deck-h");
+    };
+  }, [mode]);
+
+  const irA = (index) => {
+    const el = workRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    const recorrido = el.offsetHeight - window.innerHeight;
+    const p = index === 0 ? 0 : (index - 0.2) * PASO;
+    window.scrollTo({
+      top: top + recorrido * (0.04 + p * 0.86),
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section className="proyectos" id="proyectos">
+      {/* ─── Destacados ─── */}
+      <div
+        className="work"
+        ref={workRef}
+        style={
+          pinned
+            ? { height: `${100 + (destacados.length - 1) * VH_POR_PASO}vh` }
+            : undefined
+        }
+      >
+        <div className="work__sticky">
+          <h2 className="display work__titulo">
+            <SplitText text="Ideas que se volvieron reales" inView />
+          </h2>
+
+          <div className="work__layout">
+            {pinned && (
+              <ol className="work__index">
+                <motion.span
+                  className="work__index-fill"
+                  style={{ scaleY: progress }}
+                />
+                {destacados.map((p, i) => (
+                  <li key={p.id} className={i === activo ? "is-active" : ""}>
+                    <button
+                      type="button"
+                      onClick={() => irA(i)}
+                      aria-current={i === activo ? "true" : undefined}
+                    >
+                      <span className="work__index-nombre">{p.titulo}</span>
+                      <span className="work__index-estado">{p.estado}</span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            )}
+
+            <div className="work__frame" ref={frameRef}>
+              {destacados.map((p, i) => (
+                <Tarjeta
+                  key={p.id}
+                  proyecto={p}
+                  index={i}
+                  progress={progress}
+                  deckProgress={deckProgress}
+                  mode={mode}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── Resto de proyectos ─── */}
+      <div className="mas">
+        <h3 className="display mas__titulo">Más proyectos</h3>
+
+        <div className="mas__grid">
+          {otros.map((p, i) => (
+            <motion.article
+              className="mas__tile"
+              key={p.id}
+              onPointerMove={handleSpot}
+              initial={{ opacity: 0, y: 40, x: pinned ? 0 : i % 2 ? 36 : -36 }}
+              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, ease: EASE, delay: (i % 2) * 0.08 }}
+            >
+              <div className="mas__emblem">
+                <img
+                  src={p.icono}
+                  alt=""
+                  loading="lazy"
+                  style={p.placa ? { background: p.placa } : undefined}
+                />
+              </div>
+              <div className="mas__body">
+                <span className={`estado ${claseEstado(p.estado)}`}>
+                  {p.estado}
+                </span>
+                <h4>{p.titulo}</h4>
+                {p.bajada && <p className="mas__bajada">{p.bajada}</p>}
+                <p>{p.descripcion}</p>
+                {p.nota && <p className="mas__nota">{p.nota}</p>}
+                <Chips items={p.detalles} />
+                {p.enlace && <Enlace proyecto={p} />}
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Proyectos;

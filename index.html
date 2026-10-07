@@ -2,11 +2,21 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
 
-    <!-- 🔤 Google Fonts: Montserrat + Playfair Display -->
+    <!-- 🔤 Google Fonts: Montserrat (Norwester se sirve local) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Norwester no trae tildes, Ñ ni ¿¡: Fjalla One cubre solo esos caracteres (ÁÉÍÓÚÑÜáéíóúñü¿¡) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&text=%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%91%C3%9C%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%B1%C3%BC%C2%BF%C2%A1&display=swap"
       rel="stylesheet"
     />
 
@@ -16,10 +26,11 @@
     <!-- SEO básico -->
     <meta
       name="description"
-      content="Portafolio profesional de Lucas Salazar, desarrollador web creativo especializado en React, Node.js y experiencias digitales."
+      content="Portafolio de Lucas Salazar, desarrollador fullstack: productos SaaS, sistemas POS y plataformas operativas con React, Next.js, NestJS y PostgreSQL."
     />
     <meta name="author" content="Lucas Salazar" />
-    <meta name="theme-color" content="#ff5e00" />
+    <!-- Igual al color superior de la página para que la barra de estado se funda -->
+    <meta name="theme-color" content="#141c2e" />
 
     <!-- Título del sitio -->
     <title>Lucas Salazar – Desarrollador Web</title>

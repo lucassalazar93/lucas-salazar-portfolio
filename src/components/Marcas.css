@@ -1,0 +1,73 @@
+.marcas {
+  position: relative;
+  padding: var(--section-space) var(--gutter);
+  background:
+    radial-gradient(50% 45% at 12% 0%, rgba(255, 94, 0, 0.14), transparent 70%),
+    var(--color-bg);
+}
+
+.marcas__header,
+.marcas__grid {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.marcas__header .lead {
+  margin-top: 1.25rem;
+}
+
+/* ─── Fichas ─────────────────────────────── */
+.marcas__grid {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.9rem, 1.6vw, 1.5rem);
+}
+
+/* Placa blanca uniforme: iguala logos de estilos muy distintos */
+.marca {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: 11%;
+  border-radius: var(--radius-card);
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px var(--color-line),
+    0 24px 48px -28px rgba(0, 0, 0, 0.8);
+  transition:
+    translate 0.5s var(--ease-out),
+    box-shadow 0.4s ease;
+}
+
+.marca img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: scale 0.6s var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .marca:hover {
+    translate: 0 -8px;
+    box-shadow:
+      0 0 0 2px var(--color-accent),
+      0 32px 60px -24px rgba(255, 94, 0, 0.55);
+  }
+
+  .marca:hover img {
+    scale: 1.06;
+  }
+}
+
+@media (min-width: 600px) {
+  .marcas__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .marcas__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
