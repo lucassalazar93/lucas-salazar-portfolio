@@ -57,7 +57,7 @@ También: ELVORÉ (joyería en oro 18k), ORIX, Tienda del Futuro Multimarca, Sis
 - **Frontend**: React · Next.js · TypeScript · JavaScript · HTML5 · CSS3
 - **Backend**: Node.js · NestJS · Express · .NET (C#)
 - **Bases de datos**: PostgreSQL · Prisma · SQL Server · MySQL · Firebase
-- **Despliegue y flujo**: Vercel · Git & GitHub · flujo de ramas · dominios propios
+- **Despliegue y flujo**: Vercel · Railway · Docker · VPS · CI/CD · Git & GitHub · flujo de ramas · dominios propios
 - **Integraciones**: WhatsApp · Google Workspace · Shopify API · biométricos ZKTeco / BioTime · IA aplicada
 
 ---

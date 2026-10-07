@@ -4,7 +4,7 @@ export const WHATSAPP_URL =
 
 export const WHATSAPP_LABEL = "+57 315 039 9322";
 
-export const CV_URL = "/Lucas_SalazarVilla_CV2026 Fullstack Developer.pdf";
+export const CV_URL = "/Lucas_Salazar_Villa_CV_Fullstack_Developer.pdf";
 
 export const EMAIL = "lucassalazar.work93@gmail.com";
 

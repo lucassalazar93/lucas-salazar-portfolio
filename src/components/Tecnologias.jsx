@@ -62,6 +62,10 @@ const basesDeDatos = [
 const despliegue = [
   "Despliegues a producción",
   "Vercel",
+  "Railway",
+  "Docker",
+  "VPS",
+  "CI/CD",
   "Dominios propios",
   "Git & GitHub",
   "Flujo de ramas",
