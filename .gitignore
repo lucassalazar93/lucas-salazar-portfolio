@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Capturas y registros de Playwright MCP
+.playwright-mcp/
