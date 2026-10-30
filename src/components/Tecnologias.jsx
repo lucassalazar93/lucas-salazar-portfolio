@@ -222,6 +222,7 @@ const Tecnologias = () => {
               <strong>IA Generativa</strong> y{" "}
               <strong>E-commerce de alto nivel</strong>. No solo creo sitios
               web, construyo herramientas que optimizan tus ventas y procesos.
+              Lo hago a través de <strong>Lukbyte</strong>, mi agencia de software a medida.
             </p>
             <a
               href={SERVICIOS_URL}
@@ -229,7 +230,7 @@ const Tecnologias = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ButtonLabel>Ver paquetes y precios</ButtonLabel>
+              <ButtonLabel>Conoce Lukbyte</ButtonLabel>
               <span className="btn__icon">
                 <ArrowUpRight size={18} weight="bold" />
               </span>

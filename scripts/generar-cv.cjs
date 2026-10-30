@@ -137,7 +137,7 @@ const contenido = [
       run(" | "),
       enlace("github.com/lucassalazar93", "https://github.com/lucassalazar93"),
       run(" | "),
-      enlace("linkedin.com/in/lucas-salazar-722b79319", "https://www.linkedin.com/in/lucas-salazar-722b79319/"),
+      enlace("linkedin.com/in/lucas-salazar-fullstack", "https://www.linkedin.com/in/lucas-salazar-fullstack/"),
     ],
   }),
 

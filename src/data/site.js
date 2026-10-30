@@ -12,7 +12,7 @@ export const SERVICIOS_URL = "https://lukbyte-my-website.vercel.app/";
 
 export const GITHUB_URL = "https://github.com/lucassalazar93";
 export const LINKEDIN_URL =
-  "https://www.linkedin.com/in/lucas-salazar-722b79319/";
+  "https://www.linkedin.com/in/lucas-salazar-fullstack/";
 export const INSTAGRAM_URL = "https://www.instagram.com/soylukassalazar/";
 
 /* Etiqueta única para la intención "contacto" en toda la página */

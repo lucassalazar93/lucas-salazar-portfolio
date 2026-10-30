@@ -82,7 +82,7 @@ Portafolio en React + Vite con Framer Motion.
 
 - ✉️ lucassalazar.work93@gmail.com
 - 💬 https://wa.me/573150399322
-- 💼 https://www.linkedin.com/in/lucas-salazar-722b79319/
+- 💼 https://www.linkedin.com/in/lucas-salazar-fullstack/
 
 ---
 
