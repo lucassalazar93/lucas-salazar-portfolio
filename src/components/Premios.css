@@ -1,0 +1,241 @@
+/* overflow-x: el resplandor de las fotos no debe ensanchar la página */
+.premios {
+  position: relative;
+  overflow-x: clip;
+  padding: var(--section-space) var(--gutter);
+  background:
+    radial-gradient(45% 35% at 90% 20%, rgba(255, 94, 0, 0.12), transparent 70%),
+    var(--color-bg);
+}
+
+.premios__header,
+.premios__lista {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+/* ─── Encabezado ─────────────────────────────── */
+.premios__header {
+  display: grid;
+  gap: 2rem;
+}
+
+.premios__header .lead {
+  margin-top: 1.25rem;
+}
+
+.premios__total {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-line-strong);
+}
+
+.premios__total strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.premios__total > span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+/* ─── Contador ─────────────────────────────── */
+/* La reserva y la cifra comparten celda: manda el ancho del valor final */
+.contador {
+  display: inline-grid;
+}
+
+.contador__reserva,
+.contador__cifra {
+  grid-area: 1 / 1;
+  text-align: inherit;
+}
+
+.contador__reserva {
+  visibility: hidden;
+}
+
+/* ─── Filas ─────────────────────────────── */
+.premios__lista {
+  margin-top: clamp(3rem, 6vw, 6rem);
+  display: grid;
+  gap: clamp(4.5rem, 10vw, 9rem);
+}
+
+.premio__figura {
+  display: grid;
+  gap: 1.75rem;
+}
+
+/* Resplandor fijo detrás de la foto (sin filtros: no repinta al hacer scroll) */
+.premio__media {
+  position: relative;
+}
+
+.premio__media::before {
+  content: "";
+  position: absolute;
+  inset: 12% -8% -10%;
+  background: radial-gradient(closest-side, rgba(255, 94, 0, 0.3), transparent);
+  pointer-events: none;
+}
+
+.premio__foto {
+  position: relative;
+  aspect-ratio: 24 / 25;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--color-navy);
+}
+
+/* Filo interior: un box-shadow quedaría recortado por el clip-path */
+.premio__foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--color-line-strong);
+  pointer-events: none;
+}
+
+.premio__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* ─── Texto ─────────────────────────────── */
+.premio__lugar {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 11vw, 10rem);
+  line-height: 0.82;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-accent);
+}
+
+.premio__puesto {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.premio__puesto::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.premio__titulo {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.premio__desc {
+  margin-top: 1rem;
+  max-width: 46ch;
+  color: var(--color-text-dim);
+}
+
+.premio__chips {
+  margin-top: 1.25rem;
+}
+
+.premio__monto {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-line-strong);
+}
+
+.premio__monto-label {
+  flex-basis: 100%;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.premio__monto strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.premio__moneda {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-text-dim);
+}
+
+/* ─── Escritorio ─────────────────────────────── */
+/* Doce columnas: el primer puesto lleva la foto más grande y las filas
+   pares se invierten para que la lectura zigzaguee */
+@media (min-width: 900px) {
+  .premios__header {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 4rem;
+  }
+
+  .premios__total {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .premio__figura {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    align-items: center;
+  }
+
+  .premio__media {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+  }
+
+  .premio__info {
+    grid-column: 8 / -1;
+    grid-row: 1;
+  }
+
+  .premio:nth-child(even) .premio__media {
+    grid-column: 8 / -1;
+  }
+
+  .premio:nth-child(even) .premio__info {
+    grid-column: 2 / span 5;
+  }
+}

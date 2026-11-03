@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Proyectos from "./components/Proyectos";
+import Premios from "./components/Premios";
 import Marcas from "./components/Marcas";
 import QuienSoy from "./components/QuienSoy";
 import Tecnologias from "./components/Tecnologias";
@@ -21,6 +22,7 @@ function App() {
       <main>
         <Hero />
         <Proyectos />
+        <Premios />
         <Marcas />
         <QuienSoy />
         <Tecnologias />
