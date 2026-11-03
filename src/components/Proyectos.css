@@ -117,6 +117,32 @@
   color: var(--color-text);
 }
 
+/* Cifra de uso real: número y qué mide en una sola fila para no
+   alargar la tarjeta */
+.metrica {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+}
+
+.metrica strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 2.8vw, 2.75rem);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.metrica__texto {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
 /* Flujo del sistema: pasos en línea (solo escritorio) */
 .stack-card__flujo {
   display: none;
@@ -372,6 +398,38 @@
   }
 }
 
+/* Escritorio con poca altura (portátiles): la tarjeta mide lo que deja
+   la ventana, así que se compacta para que nada quede recortado */
+@media (min-width: 900px) and (max-height: 800px) {
+  .stack-card__body {
+    gap: 0.6rem;
+    padding-block: 1.75rem;
+  }
+
+  .stack-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .metrica strong {
+    font-size: 2rem;
+  }
+
+  .stack-card .chips li:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 640px) {
+  .stack-card__body {
+    padding-block: 1.25rem;
+  }
+
+  .stack-card .chips {
+    display: none;
+  }
+}
+
 /* ─── Scroll fijado: solo escritorio con movimiento permitido ─── */
 @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
   /* Sube sobre el hero mientras este sigue fijo */
@@ -529,6 +587,21 @@
   }
 
   .stack-card .chips li:nth-child(n + 5) {
+    display: none;
+  }
+
+  /* La métrica va al lado de la cifra y su tarjeta muestra solo dos
+     etiquetas: la baraja iguala todas a la más alta y debe caber en 667px */
+  .metrica {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .metrica strong {
+    font-size: 1.85rem;
+  }
+
+  .stack-card--metrica .chips li:nth-child(n + 3) {
     display: none;
   }
 }

@@ -9,8 +9,10 @@ import {
 import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
 import "./Proyectos.css";
 import SplitText from "./ui/SplitText";
+import Contador from "./ui/Contador";
 import { useMotionMode } from "../hooks/usePinned";
 import { claseEstado, destacados, otros } from "../data/proyectos";
+import { formatoMiles } from "../data/site";
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -27,6 +29,20 @@ const Chips = ({ items }) => (
       <li key={item}>{item}</li>
     ))}
   </ul>
+);
+
+/* Cifra de uso real: sube al entrar la tarjeta en pantalla */
+const Metrica = ({ metrica, quieto }) => (
+  <p className="metrica">
+    <strong>
+      <Contador
+        valor={metrica.valor}
+        formato={(v) => `${formatoMiles(v)}${metrica.sufijo}`}
+        quieto={quieto}
+      />
+    </strong>
+    <span className="metrica__texto">{metrica.texto}</span>
+  </p>
 );
 
 const Enlace = ({ proyecto }) => (
@@ -64,7 +80,10 @@ const Tarjeta = ({ proyecto, index, progress, deckProgress, mode }) => {
         : undefined;
 
   return (
-    <motion.article className="stack-card" style={style}>
+    <motion.article
+      className={`stack-card${proyecto.metrica ? " stack-card--metrica" : ""}`}
+      style={style}
+    >
       <div className="stack-card__emblem">
         <img
           src={proyecto.icono}
@@ -84,6 +103,9 @@ const Tarjeta = ({ proyecto, index, progress, deckProgress, mode }) => {
         )}
         <p className="stack-card__desc">{proyecto.descripcion}</p>
         {proyecto.nota && <p className="stack-card__nota">{proyecto.nota}</p>}
+        {proyecto.metrica && (
+          <Metrica metrica={proyecto.metrica} quieto={mode === "static"} />
+        )}
         {proyecto.flujo && (
           <ol className="stack-card__flujo" aria-label="Flujo del sistema">
             {proyecto.flujo.map((paso, i) => (
@@ -268,6 +290,9 @@ const Proyectos = () => {
                 {p.bajada && <p className="mas__bajada">{p.bajada}</p>}
                 <p>{p.descripcion}</p>
                 {p.nota && <p className="mas__nota">{p.nota}</p>}
+                {p.metrica && (
+                  <Metrica metrica={p.metrica} quieto={mode === "static"} />
+                )}
                 <Chips items={p.detalles} />
                 {p.enlace && <Enlace proyecto={p} />}
               </div>

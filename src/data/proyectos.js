@@ -17,7 +17,8 @@ import elvore from "../assets/img/proyectos/elvore.webp";
    destacado: entra en la pila con scroll (en este orden).
    placa: color de fondo del emblema cuando el logo trae fondo propio.
    enlace: sitio público, muestra el botón "Ver en vivo".
-   flujo: pasos de la arquitectura, se dibujan como una línea. */
+   flujo: pasos de la arquitectura, se dibujan como una línea.
+   metrica: cifra de uso real (valor numérico, sufijo y qué mide). */
 export const proyectos = [
   {
     id: "mandipos",
@@ -27,6 +28,11 @@ export const proyectos = [
     descripcion:
       "Ecosistema para restaurantes ya en operación: POS, app de domicilios, catálogo para clientes y un robot que controla los sistemas de impresión.",
     nota: "En operación en dos sedes: Mandingas La 37 y Mundo Mandingas.",
+    metrica: {
+      valor: 8627,
+      sufijo: "+",
+      texto: "Pedidos entregados · julio a octubre de 2026",
+    },
     detalles: [
       "Next.js",
       "NestJS",
@@ -46,6 +52,11 @@ export const proyectos = [
     bajada: "Catálogos inteligentes y geolocalización",
     descripcion:
       "Recuerda los datos de tus clientes, recomienda los productos más vendidos y sugiere adicionales. Cotiza domicilios por zonas y envía el pedido a WhatsApp o directo al POS.",
+    metrica: {
+      valor: 2653,
+      sufijo: "+",
+      texto: "Domicilios entregados · julio a octubre de 2026",
+    },
     detalles: [
       "Catálogo inteligente",
       "Geolocalización",
