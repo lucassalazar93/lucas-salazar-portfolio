@@ -102,7 +102,7 @@ export const proyectos = [
     titulo: "Tienda del Futuro Multimarca",
     descripcion:
       "Experiencia omnicanal para Gef, Punto Blanco y Baby Fresh con visualización de outfits mediante IA y checkout unificado.",
-    nota: "Primer puesto en INNOVA 2025 de Crystal, con un premio de $20.000.000.",
+    nota: "Proyecto en equipo: primer puesto en INNOVA 2025 de Crystal.",
     detalles: [
       "React",
       "IA Generativa",

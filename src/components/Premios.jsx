@@ -130,7 +130,7 @@ const Premio = ({ premio, quieto }) => {
           </motion.ul>
 
           <motion.p className="premio__monto" variants={itemVariants}>
-            <span className="premio__monto-label">Premio</span>
+            <span className="premio__monto-label">Premio al equipo</span>
             <strong>
               <Contador
                 valor={premio.monto}
@@ -157,8 +157,9 @@ const Premios = () => {
             <SplitText text="Ideas que ganaron" inView />
           </h2>
           <p className="lead">
-            Dos de mis propuestas ganaron el primer y el tercer puesto en
-            INNOVA, la convocatoria de innovación de Crystal.
+            Fui parte de los equipos detrás de dos proyectos premiados en
+            INNOVA, la convocatoria de innovación de Crystal: primer y tercer
+            puesto.
           </p>
         </div>
 
@@ -171,7 +172,7 @@ const Premios = () => {
               quieto={quieto}
             />
           </strong>
-          <span>COP en premios · {premios[0].anio}</span>
+          <span>COP en premios a los equipos · {premios[0].anio}</span>
         </p>
       </header>
 
