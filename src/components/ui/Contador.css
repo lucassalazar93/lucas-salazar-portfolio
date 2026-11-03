@@ -1,0 +1,14 @@
+/* La reserva y la cifra comparten celda: manda el ancho del valor final */
+.contador {
+  display: inline-grid;
+}
+
+.contador__reserva,
+.contador__cifra {
+  grid-area: 1 / 1;
+  text-align: inherit;
+}
+
+.contador__reserva {
+  visibility: hidden;
+}

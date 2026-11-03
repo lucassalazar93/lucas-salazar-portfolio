@@ -1,13 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import {
-  animate,
-  motion,
-  useInView,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import "./Premios.css";
 import SplitText from "./ui/SplitText";
+import Contador from "./ui/Contador";
 import { useMotionMode } from "../hooks/usePinned";
 import {
   formatoMillones,
@@ -41,37 +36,6 @@ const cortinaVariants = {
 const fotoVariants = {
   hidden: { scale: 1.15 },
   visible: { scale: 1, transition: { duration: 1.6, ease: EASE } },
-};
-
-/* Cifra que sube desde cero al entrar en pantalla. La copia final,
-   invisible, reserva el ancho para que el texto no salte al contar. */
-const Contador = ({ valor, formato, quieto }) => {
-  const ref = useRef(null);
-  const enVista = useInView(ref, { once: true, amount: 0.8 });
-  const actual = useMotionValue(quieto ? valor : 0);
-  const texto = useTransform(actual, (v) => formato(Math.round(v)));
-
-  useEffect(() => {
-    if (quieto) {
-      actual.set(valor);
-      return;
-    }
-    if (!enVista) return;
-    const control = animate(actual, valor, { duration: 1.8, ease: EASE });
-    return () => control.stop();
-  }, [enVista, quieto, valor, actual]);
-
-  return (
-    <span className="contador" ref={ref}>
-      <span className="sr-only">{formato(valor)}</span>
-      <span className="contador__reserva" aria-hidden="true">
-        {formato(valor)}
-      </span>
-      <motion.span className="contador__cifra" aria-hidden="true">
-        {texto}
-      </motion.span>
-    </span>
-  );
 };
 
 /* Una fila por premio: foto de un lado, la historia del otro.

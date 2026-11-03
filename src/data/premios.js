@@ -1,5 +1,6 @@
 import tiendaDelFuturo from "../assets/img/premios/tienda-del-futuro.webp";
 import hiperautomatizacion from "../assets/img/premios/hiperautomatizacion-rpa-ia.webp";
+import { formatoMiles } from "./site";
 
 /* ─── Premios ───────────────────────
    Una fila por premio, en orden de puesto. monto en pesos colombianos.
@@ -39,7 +40,7 @@ export const premios = [
 export const totalPremios = premios.reduce((suma, p) => suma + p.monto, 0);
 
 export function formatoPesos(valor) {
-  return `$${valor.toLocaleString("es-CO")}`;
+  return `$${formatoMiles(valor)}`;
 }
 
 export function formatoMillones(valor) {

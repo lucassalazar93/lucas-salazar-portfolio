@@ -33,6 +33,12 @@ export function scrollToSection(id) {
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
+/* Miles con punto (8.627). A mano: algunos navegadores no agrupan
+   números de cuatro cifras en español */
+export function formatoMiles(valor) {
+  return String(valor).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
 /* ─── Trayectoria ─── */
 export const INICIO_EXPERIENCIA = new Date(2024, 11, 1); // diciembre de 2024
 
