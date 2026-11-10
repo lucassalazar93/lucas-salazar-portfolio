@@ -3,6 +3,8 @@ import csharpPoo from "../assets/img/certificados/csharp-poo.webp";
 import csharp from "../assets/img/certificados/csharp.webp";
 import linq from "../assets/img/certificados/linq.webp";
 import arquitectura from "../assets/img/certificados/arquitectura-software.webp";
+import fundamentosRedes from "../assets/img/certificados/fundamentos-redes.webp";
+import introduccionIot from "../assets/img/certificados/introduccion-iot.webp";
 
 export const certificados = [
   {
@@ -49,5 +51,23 @@ export const certificados = [
     descripcion:
       "Certificación técnica en el diseño de sistemas escalables y mantenibles. Aprendí a seleccionar estructuras de software adecuadas basándome en requerimientos de negocio y atributos de calidad.",
     enlace: "/images/certificados/diploma-arquitectura-software-2025.pdf",
+  },
+  {
+    icono: fundamentosRedes,
+    titulo: "Fundamentos de Redes",
+    entidad: "Cisco Networking Academy · CUN",
+    fecha: "Noviembre 2026",
+    descripcion:
+      "Bases de redes de computadores: cómo se comunican los dispositivos, protocolos y direccionamiento IP. Un apoyo directo para las integraciones con equipos en red, como los biométricos ZKTeco.",
+    enlace: "/images/certificados/diploma-fundamentos-redes.pdf",
+  },
+  {
+    icono: introduccionIot,
+    titulo: "Introducción a IoT y Transformación Digital",
+    entidad: "Cisco Networking Academy",
+    fecha: "Noviembre 2026",
+    descripcion:
+      "Cómo el Internet de las Cosas conecta sensores, redes y datos para transformar los procesos de un negocio. Encaja con mi trabajo en sistemas que unen hardware y software.",
+    enlace: "/images/certificados/diploma-introduccion-iot.pdf",
   },
 ];

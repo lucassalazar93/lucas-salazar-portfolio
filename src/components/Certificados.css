@@ -63,13 +63,19 @@
   color: var(--color-text-dim);
 }
 
+/* Entidad y fecha no se parten por dentro, pero la fecha puede bajar de
+   línea cuando la entidad es larga (Cisco Networking Academy · CUN) */
 .certificado__meta {
   display: flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.certificado__meta span {
   white-space: nowrap;
 }
 
@@ -163,14 +169,14 @@
 
 @media (hover: hover) and (pointer: fine) and (max-width: 899px) {
   .certificado {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 /* ─── Táctil: sin hover, el diploma va a lo ancho y se revela al entrar ─── */
 @media (hover: none), (pointer: coarse) {
   .certificado {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.9rem;
   }
 
