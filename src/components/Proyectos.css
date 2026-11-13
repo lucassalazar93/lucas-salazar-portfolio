@@ -418,11 +418,21 @@
   .stack-card .chips li:nth-child(n + 5) {
     display: none;
   }
+
+  /* El índice lateral lista todos los destacados y también debe caber.
+     .work delante: su regla base está más abajo en el archivo */
+  .work .work__index {
+    gap: 0.85rem;
+  }
 }
 
 @media (min-width: 900px) and (max-height: 640px) {
   .stack-card__body {
     padding-block: 1.25rem;
+  }
+
+  .work .work__index {
+    gap: 0.6rem;
   }
 
   .stack-card .chips {

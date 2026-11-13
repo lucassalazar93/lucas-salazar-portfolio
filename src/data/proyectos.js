@@ -11,6 +11,7 @@ import quickflow from "../assets/img/proyectos/quickflow.webp";
 import primotos from "../assets/img/proyectos/primotos.webp";
 import patient360 from "../assets/img/proyectos/patient360.webp";
 import elvore from "../assets/img/proyectos/elvore.webp";
+import equinox from "../assets/img/proyectos/equinox.webp";
 
 /* ─── Data de proyectos ───────────────────────
    Una tarjeta por proyecto, cada una con su logo.
@@ -66,6 +67,19 @@ export const proyectos = [
     ],
     estado: "En el mercado",
     enlace: "https://quickflow-tau.vercel.app/",
+    destacado: true,
+    placa: "#ffffff",
+  },
+  {
+    id: "equinox",
+    icono: equinox,
+    titulo: "Sistema Comercial Equinox",
+    bajada: "Industrias Equinox · Equipos lácteos en acero inoxidable",
+    descripcion:
+      "Catálogo con cotizador, asistente que entrega cada solicitud a un asesor, visor 3D de los equipos y un panel de ventas que avisa a quién hacerle seguimiento.",
+    flujo: ["Sitio y asistente", "Base de datos", "Panel de ventas", "Cierre"],
+    detalles: ["Three.js", "Modelado 3D", "CRM", "Cotizador", "WhatsApp"],
+    estado: "En desarrollo",
     destacado: true,
     placa: "#ffffff",
   },
