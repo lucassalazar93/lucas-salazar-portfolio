@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   ArrowUpRight,
   Browsers,
+  CubeTransparent,
   Database,
   GitBranch,
   Handshake,
@@ -28,6 +29,17 @@ const frontend = [
   "Framer Motion (Animaciones)",
   "Data Visualization (Dashboards/KPIs)",
   "React Hook Form (Smart Forms)",
+];
+
+/* Modelos hechos por código, como los equipos del Sistema Comercial Equinox */
+const modelado3d = [
+  "Three.js",
+  "Modelado 3D por código",
+  "Modelos con medidas reales",
+  "Materiales PBR (acero inoxidable)",
+  "Visores 3D: pieza por pieza, en corte y funcionando",
+  "Configurador 3D (arma tu planta)",
+  "Recorridos 3D de planta a partir de planos",
 ];
 
 const backend = [
@@ -100,6 +112,11 @@ const habilidadesBlandas = [
 
 const grupos = [
   { titulo: "Frontend & UX", Icono: Browsers, items: frontend },
+  {
+    titulo: "Modelado 3D & Visualización",
+    Icono: CubeTransparent,
+    items: modelado3d,
+  },
   { titulo: "Backend & APIs", Icono: TreeStructure, items: backend },
   { titulo: "Bases de Datos", Icono: Database, items: basesDeDatos },
   {
